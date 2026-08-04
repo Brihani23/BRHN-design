@@ -9,12 +9,16 @@ import {
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-type PathwayId = "crear" | "construir" | "lanzar";
+type PathwayId =
+  | "escuchamos"
+  | "alineamos"
+  | "construimos";
 
 type Pathway = {
   id: PathwayId;
   number: string;
   title: string;
+  letter: string;
   subtitle: string;
   description: string;
   className: string;
@@ -27,89 +31,92 @@ type Pathway = {
 
 const pathways: Pathway[] = [
   {
-    id: "crear",
+    id: "escuchamos",
     number: "01",
-    title: "Crear",
-    subtitle: "Producto · Identidad · Concepto",
+    title: "Escuchamos",
+    letter: "E",
+    subtitle: "Contexto · Entorno · Necesidades",
     description:
-      "Convertimos oportunidades en conceptos útiles, reconocibles y capaces de diferenciarse.",
+      "Antes de proponer una solución, entendemos profundamente a las personas y al proyecto.",
     className: "design-card--create",
     items: [
       {
         number: "01",
-        title: "Descubrir",
+        title: "Conversación",
         description:
-          "Investigamos el contexto, las personas, el mercado y las oportunidades reales del proyecto.",
+          "Hablamos contigo para conocer tu historia, tus inquietudes y la razón detrás del proyecto.",
       },
       {
         number: "02",
-        title: "Definir",
+        title: "Contexto",
         description:
-          "Construimos una dirección estratégica clara antes de comenzar a diseñar.",
+          "Analizamos tu entorno, industria, mercado, usuarios y las condiciones reales que rodean la idea.",
       },
       {
         number: "03",
-        title: "Diseñar",
+        title: "Necesidades",
         description:
-          "Creamos productos, identidades y conceptos coherentes, útiles y memorables.",
+          "Identificamos qué necesita resolverse y qué aspectos son realmente importantes antes de diseñar.",
       },
     ],
   },
   {
-    id: "construir",
+    id: "alineamos",
     number: "02",
-    title: "Construir",
-    subtitle: "Experiencia · Tecnología · Operación",
+    title: "Alineamos",
+    letter: "A",
+    subtitle: "Ideas · Objetivos · Presupuesto",
     description:
-      "Diseñamos la experiencia completa y desarrollamos las herramientas que la hacen funcionar.",
+      "Convertimos tus ideas y expectativas en una dirección clara, compartida y viable.",
     className: "design-card--build",
     items: [
       {
         number: "01",
-        title: "Experiencia",
+        title: "Visión",
         description:
-          "Organizamos procesos, interacciones y puntos de contacto físicos y digitales.",
+          "Ordenamos tus ideas para definir con claridad qué queremos construir y por qué.",
       },
       {
         number: "02",
-        title: "Desarrollo",
+        title: "Objetivos",
         description:
-          "Construimos plataformas, sitios, aplicaciones, prototipos y sistemas operativos.",
+          "Establecemos qué debe lograr el proyecto y cómo evaluaremos que la solución funcione.",
       },
       {
         number: "03",
-        title: "Validación",
+        title: "Alcance",
         description:
-          "Probamos, corregimos y optimizamos antes de llevar la solución a escala.",
+          "Alineamos presupuesto, prioridades, tiempos y entregables para avanzar sobre una base realista.",
       },
     ],
   },
   {
-    id: "lanzar",
+    id: "construimos",
     number: "03",
-    title: "Lanzar",
-    subtitle: "Estrategia · Mercado · Crecimiento",
+    title: "Construimos",
+    letter: "C",
+    subtitle: "Colaboración · Diseño · Ejecución",
     description:
-      "Preparamos cada sistema para entrar al mercado, operar, comunicar y evolucionar.",
+      "Un equipo eficiente trabaja de forma coordinada contigo para desarrollar la mejor respuesta.",
     className: "design-card--launch",
     items: [
       {
         number: "01",
-        title: "Posicionamiento",
+        title: "Equipo",
         description:
-          "Definimos la propuesta, el mercado y el lugar que debe ocupar la solución.",
+          "Reunimos las disciplinas necesarias según las necesidades específicas de cada proyecto.",
       },
       {
         number: "02",
-        title: "Comunicación",
+        title: "Colaboración",
         description:
-          "Diseñamos mensajes, campañas, contenidos y herramientas comerciales.",
+          "Trabajamos de la mano contigo, compartiendo avances, decisiones y ajustes durante todo el proceso.",
       },
       {
         number: "03",
-        title: "Evolución",
+        title: "Resultado",
         description:
-          "Medimos resultados y desarrollamos nuevas oportunidades de crecimiento.",
+          "Materializamos una solución coherente, funcional y diseñada para responder al contexto real.",
       },
     ],
   },
@@ -121,159 +128,118 @@ export default function DesignPortal() {
   const [activePathway, setActivePathway] =
     useState<Pathway | null>(null);
 
-  const [cardsLocked, setCardsLocked] = useState(false);
+  const [cardsLocked, setCardsLocked] =
+    useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  /* =======================================================
-     FRAME
-     ======================================================= */
+  /* Frame */
 
   const frameWidth = useTransform(
     scrollYProgress,
     [0, 0.26],
     ["86vw", "100vw"],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const frameHeight = useTransform(
     scrollYProgress,
     [0, 0.26],
     ["78vh", "100vh"],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const frameRadius = useTransform(
     scrollYProgress,
     [0, 0.26],
     [34, 0],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const frameY = useTransform(
     scrollYProgress,
     [0, 0.26],
     [62, 0],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
-  /* =======================================================
-     MANIFIESTO
-     ======================================================= */
+  /* Manifiesto */
 
   const statementOpacity = useTransform(
     scrollYProgress,
     [0.07, 0.18, 0.36, 0.46],
     [0, 1, 1, 0],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const statementY = useTransform(
     scrollYProgress,
     [0.07, 0.2, 0.46],
     [70, 0, -70],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const statementScale = useTransform(
     scrollYProgress,
     [0.2, 0.46],
     [1, 0.92],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
-  /* =======================================================
-     TARJETAS
-     ======================================================= */
+  /* Tarjetas */
 
-  /*
-   * La opacidad solo se utiliza durante la entrada.
-   * Cuando cardsLocked es true, se fuerza a 1.
-   */
   const cardsEntranceOpacity = useTransform(
     scrollYProgress,
     [0.4, 0.56],
     [0, 1],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const cardsY = useTransform(
     scrollYProgress,
     [0.4, 0.82],
     [160, 0],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const cardsScale = useTransform(
     scrollYProgress,
     [0.4, 0.82],
     [0.86, 1],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const firstCardX = useTransform(
     scrollYProgress,
     [0.48, 0.9],
     ["68%", "0%"],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const secondCardY = useTransform(
     scrollYProgress,
     [0.48, 0.9],
     ["18%", "0%"],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
   const thirdCardX = useTransform(
     scrollYProgress,
     [0.48, 0.9],
     ["-68%", "0%"],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
-  const hintOpacity = useTransform(
+  const finalContentOpacity = useTransform(
     scrollYProgress,
     [0.76, 0.9],
     [0, 1],
-    {
-      clamp: true,
-    },
+    { clamp: true },
   );
 
-  /*
-   * Congela las tarjetas al llegar a su posición final.
-   * Solo se liberan al volver claramente hacia el Hero.
-   */
   useMotionValueEvent(
     scrollYProgress,
     "change",
@@ -287,10 +253,6 @@ export default function DesignPortal() {
       }
     },
   );
-
-  /* =======================================================
-     PANEL EXPANDIDO
-     ======================================================= */
 
   useEffect(() => {
     if (!activePathway) {
@@ -306,11 +268,18 @@ export default function DesignPortal() {
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleKeyDown,
+    );
 
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
+
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
     };
   }, [activePathway]);
 
@@ -319,7 +288,7 @@ export default function DesignPortal() {
       <section
         ref={sectionRef}
         className="design-portal"
-        id="capacidades"
+        id="metodo"
       >
         <div className="design-portal__sticky">
           <motion.div
@@ -332,8 +301,8 @@ export default function DesignPortal() {
             }}
           >
             <div className="design-portal__topbar">
-              <span>BRHN / Sistema integral</span>
-              <span>De la idea al mercado</span>
+              <span>BRHN / Nuestro proceso</span>
+              <span>Del contexto a la solución</span>
             </div>
 
             <motion.div
@@ -344,50 +313,67 @@ export default function DesignPortal() {
                 scale: statementScale,
               }}
             >
-              <p>Una forma distinta de construir ideas</p>
+              <p>
+                Cada proyecto comienza con una conversación
+              </p>
 
               <h2>
-                Una sola visión.
+                Escuchamos antes
                 <br />
-                <span>Múltiples disciplinas.</span>
+                <span>de diseñar.</span>
               </h2>
 
               <p className="design-portal__statement-copy">
-                Diseño, estrategia y tecnología conectadas desde
-                el origen.
+                Entendemos, alineamos y construimos cada
+                solución de la mano contigo.
               </p>
+            </motion.div>
+
+            <motion.div
+              className="design-portal__section-title"
+              style={{
+                opacity: cardsLocked
+                  ? 1
+                  : finalContentOpacity,
+              }}
+            >
+              <span>01</span>
+
+              <div>
+                <p>Nuestra metodología</p>
+
+                <h2>
+                  Escuchar. Alinear.
+                  <br />
+                  Construir juntos.
+                </h2>
+              </div>
             </motion.div>
 
             <motion.div
               className="design-portal__cards"
               style={{
-                opacity: cardsLocked ? 1 : cardsEntranceOpacity,
+                opacity: cardsLocked
+                  ? 1
+                  : cardsEntranceOpacity,
                 y: cardsLocked ? 0 : cardsY,
-                scale: cardsLocked ? 1 : cardsScale,
+                scale: cardsLocked
+                  ? 1
+                  : cardsScale,
               }}
             >
               {pathways.map((pathway, index) => {
                 const animatedMovement =
                   index === 0
-                    ? {
-                        x: firstCardX,
-                      }
+                    ? { x: firstCardX }
                     : index === 1
-                      ? {
-                          y: secondCardY,
-                        }
-                      : {
-                          x: thirdCardX,
-                        };
+                      ? { y: secondCardY }
+                      : { x: thirdCardX };
 
                 const lockedMovement =
                   index === 1
-                    ? {
-                        y: 0,
-                      }
-                    : {
-                        x: 0,
-                      };
+                    ? { y: 0 }
+                    : { x: 0 };
 
                 return (
                   <motion.button
@@ -400,9 +386,9 @@ export default function DesignPortal() {
                         ? lockedMovement
                         : animatedMovement
                     }
-                    onClick={() => {
-                      setActivePathway(pathway);
-                    }}
+                    onClick={() =>
+                      setActivePathway(pathway)
+                    }
                     whileHover={{
                       y: -8,
                       rotate:
@@ -423,7 +409,9 @@ export default function DesignPortal() {
                       duration: 0.28,
                     }}
                   >
-                    <CardContent pathway={pathway} />
+                    <CardContent
+                      pathway={pathway}
+                    />
                   </motion.button>
                 );
               })}
@@ -432,10 +420,12 @@ export default function DesignPortal() {
             <motion.p
               className="design-portal__hint"
               style={{
-                opacity: cardsLocked ? 1 : hintOpacity,
+                opacity: cardsLocked
+                  ? 1
+                  : finalContentOpacity,
               }}
             >
-              Selecciona una tarjeta para explorar
+              Selecciona una etapa para explorar
             </motion.p>
           </motion.div>
         </div>
@@ -446,20 +436,23 @@ export default function DesignPortal() {
           <motion.div
             className="pathway-overlay"
             initial={{
-              backgroundColor: "rgba(0, 0, 0, 0)",
+              backgroundColor:
+                "rgba(0, 0, 0, 0)",
             }}
             animate={{
-              backgroundColor: "rgba(0, 0, 0, 0.2)",
+              backgroundColor:
+                "rgba(0, 0, 0, 0.42)",
             }}
             exit={{
-              backgroundColor: "rgba(0, 0, 0, 0)",
+              backgroundColor:
+                "rgba(0, 0, 0, 0)",
             }}
             transition={{
               duration: 0.28,
             }}
-            onClick={() => {
-              setActivePathway(null);
-            }}
+            onClick={() =>
+              setActivePathway(null)
+            }
           >
             <motion.article
               layoutId={`pathway-${activePathway.id}`}
@@ -470,13 +463,15 @@ export default function DesignPortal() {
                   ease: [0.76, 0, 0.24, 1],
                 },
               }}
-              onClick={(event) => {
-                event.stopPropagation();
-              }}
+              onClick={(event) =>
+                event.stopPropagation()
+              }
             >
               <div className="pathway-expanded__top">
                 <div>
-                  <span>{activePathway.number}</span>
+                  <span>
+                    {activePathway.number}
+                  </span>
 
                   <span>
                     BRHN / {activePathway.title}
@@ -486,9 +481,9 @@ export default function DesignPortal() {
                 <button
                   type="button"
                   className="pathway-expanded__close"
-                  onClick={() => {
-                    setActivePathway(null);
-                  }}
+                  onClick={() =>
+                    setActivePathway(null)
+                  }
                   aria-label={`Cerrar información de ${activePathway.title}`}
                 >
                   <span>Cerrar</span>
@@ -512,11 +507,17 @@ export default function DesignPortal() {
                     duration: 0.48,
                   }}
                 >
-                  <p>{activePathway.subtitle}</p>
+                  <p>
+                    {activePathway.subtitle}
+                  </p>
 
-                  <h2>{activePathway.title}</h2>
+                  <h2>
+                    {activePathway.title}
+                  </h2>
 
-                  <p>{activePathway.description}</p>
+                  <p>
+                    {activePathway.description}
+                  </p>
                 </motion.div>
 
                 <motion.div
@@ -534,19 +535,24 @@ export default function DesignPortal() {
                     duration: 0.52,
                   }}
                 >
-                  {activePathway.items.map((item) => (
-                    <article
-                      key={item.number}
-                      className="pathway-expanded__step"
-                    >
-                      <span>{item.number}</span>
+                  {activePathway.items.map(
+                    (item) => (
+                      <article
+                        key={item.number}
+                        className="pathway-expanded__step"
+                      >
+                        <span>{item.number}</span>
 
-                      <div>
-                        <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                      </div>
-                    </article>
-                  ))}
+                        <div>
+                          <h3>{item.title}</h3>
+
+                          <p>
+                            {item.description}
+                          </p>
+                        </div>
+                      </article>
+                    ),
+                  )}
                 </motion.div>
               </div>
 
@@ -554,7 +560,7 @@ export default function DesignPortal() {
                 className="pathway-expanded__letter"
                 aria-hidden="true"
               >
-                {activePathway.title.charAt(0)}
+                {activePathway.letter}
               </div>
             </motion.article>
           </motion.div>
@@ -580,7 +586,7 @@ function CardContent({
         className="design-card__graphic"
         aria-hidden="true"
       >
-        <span>{pathway.title.charAt(0)}</span>
+        <span>{pathway.letter}</span>
       </div>
 
       <div className="design-card__content">
