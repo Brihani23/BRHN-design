@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ServicesSection from "@/components/ServicesSection";
+import TrustedBy from "@/components/TrustedBy";
 
 export default function Home() {
   return (
@@ -59,13 +60,16 @@ export default function Home() {
         {/* 03 — SERVICIOS */}
         <ServicesSection />
 
-        {/* 04 — CONTACTO */}
+        {/* 04 — HAN CONFIADO EN NOSOTROS */}
+        <TrustedBy />
+
+        {/* 05 — CONTACTO */}
         <section
           className="contact-section contact-section--form"
           id="contacto"
         >
           <div className="contact-section__heading">
-            <p>04 / Iniciar un proyecto</p>
+            <p>05 / Iniciar un proyecto</p>
 
             <h2>
               Hagamos que
@@ -79,8 +83,8 @@ export default function Home() {
               <span>Cuéntanos sobre tu proyecto</span>
 
               <p>
-                No necesitas tener todo resuelto. Comencemos por entender qué
-                quieres crear, mejorar o transformar.
+                No necesitas tener todo resuelto. Comencemos por entender
+                qué quieres crear, mejorar o transformar.
               </p>
             </div>
 

@@ -20,9 +20,9 @@ export default function Navbar() {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <a href="#inicio" className="navbar__brand">
-        BRHN
-      </a>
+    <a href="/#inicio" className="navbar__logo">
+  BRHN
+</a>
 
       <nav className="navbar__links" aria-label="Navegación principal">
         {links.map((link) => (

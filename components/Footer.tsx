@@ -23,18 +23,18 @@ export default function Footer() {
         <div className="site-footer__column">
           <span>Contacto</span>
 
-          <a href="mailto:hola@brhn.mx">
-            hola@brhn.mx
+          <a href="mailto:brhn.estudio@gmail.com">
+            brhn.estudio@gmail.com
           </a>
         </div>
 
         <div className="site-footer__column">
           <span>Navegación</span>
 
-          <a href="#inicio">Inicio</a>
-          <a href="#capacidades">Sistema</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#contacto">Contacto</a>
+          <a href="/#inicio">Inicio</a>
+          <a href="/#capacidades">Capacidades</a>
+          <a href="/#nosotros">Nosotros</a>
+          <a href="/#contacto">Contacto</a>
         </div>
       </div>
 
@@ -51,8 +51,8 @@ export default function Footer() {
       <div className="site-footer__bottom">
         <span>© {currentYear} BRHN</span>
 
-        <a href="#inicio">
-          Volver arriba ↑
+        <a href="/#inicio">
+          Volver al inicio ↑
         </a>
       </div>
     </footer>
