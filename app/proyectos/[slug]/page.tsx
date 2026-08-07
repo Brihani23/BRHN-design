@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ProjectGallery from "@/components/ProjectGallery";
+
 import {
   getProjectById,
   projects,
@@ -30,6 +32,9 @@ export default async function ProjectPage({
     notFound();
   }
 
+  const galleryImages =
+    project.images.slice(1);
+
   return (
     <>
       <Navbar />
@@ -42,24 +47,51 @@ export default async function ProjectPage({
           </div>
 
           <div className="project-page__heading">
-            <div>
+            <div className="project-page__title">
               <p>{project.category}</p>
               <h1>{project.title}</h1>
             </div>
 
-            <p>{project.description}</p>
+            <p className="project-page__description">
+              {project.description}
+            </p>
           </div>
 
-          <div className="project-page__cover">
-            <img
-              src={project.cover}
-              alt={`Portada del proyecto ${project.title}`}
-            />
+          <div
+            aria-label="Información del proyecto"
+            className="project-page__meta"
+          >
+            <div>
+              <span>Año</span>
+              <p>{project.year}</p>
+            </div>
+
+            <div>
+              <span>Cliente</span>
+              <p>{project.client}</p>
+            </div>
+
+            <div>
+              <span>Disciplina</span>
+              <p>{project.discipline}</p>
+            </div>
+
+            <div>
+              <span>Alcance</span>
+              <p>{project.scope}</p>
+            </div>
           </div>
+
+          <figure className="project-page__cover">
+            <img
+              alt={`Portada del proyecto ${project.title}`}
+              src={project.cover}
+            />
+          </figure>
         </section>
 
         <section className="project-page__summary">
-          <div>
+          <div className="project-page__summary-heading">
             <span>01 / Contexto</span>
             <h2>El proyecto.</h2>
           </div>
@@ -88,23 +120,10 @@ export default async function ProjectPage({
             <span>Galería del proyecto</span>
           </div>
 
-          <div className="project-page__gallery-grid">
-            {project.images.slice(1).map((image, index) => (
-              <figure
-                className={
-                  index === 0
-                    ? "project-page__gallery-item project-page__gallery-item--wide"
-                    : "project-page__gallery-item"
-                }
-                key={image}
-              >
-                <img
-                  src={image}
-                  alt={`${project.title} — imagen ${index + 2}`}
-                />
-              </figure>
-            ))}
-          </div>
+          <ProjectGallery
+            images={galleryImages}
+            title={project.title}
+          />
         </section>
 
         <section className="project-page__closing">

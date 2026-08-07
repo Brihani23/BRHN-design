@@ -14,9 +14,9 @@ const logos = [
     href: "/proyectos/bigtree",
   },
   {
-    name: "HUGER STEPS",
+    name: "HUGE STEPS",
     src: "/logos/huge-steps.png",
-    href: "/proyectos/huger-steps",
+    href: "/proyectos/huge-steps",
   },
 ];
 

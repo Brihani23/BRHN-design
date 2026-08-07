@@ -1,11 +1,31 @@
+import Link from "next/link";
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "",
+  },
+  {
+    label: "Behance",
+    href: "",
+  },
+  {
+    label: "LinkedIn",
+    href: "",
+  },
+];
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear =
+    new Date().getFullYear();
 
   return (
     <footer className="site-footer">
       <div className="site-footer__main">
         <div className="site-footer__identity">
-          <span className="site-footer__brand">BRHN</span>
+          <span className="site-footer__brand">
+            BRHN
+          </span>
 
           <p>
             Casa de diseño integral.
@@ -29,18 +49,43 @@ export default function Footer() {
         </div>
 
         <div className="site-footer__column">
+          <span>Social</span>
+
+          {socialLinks.map((social) =>
+            social.href ? (
+              <a
+                href={social.href}
+                key={social.label}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {social.label} ↗
+              </a>
+            ) : (
+              <span
+                className="site-footer__social-disabled"
+                key={social.label}
+              >
+                {social.label}
+              </span>
+            ),
+          )}
+        </div>
+
+        <div className="site-footer__column">
           <span>Navegación</span>
 
-          <a href="/#inicio">Inicio</a>
-          <a href="/#capacidades">Capacidades</a>
-          <a href="/#nosotros">Nosotros</a>
-          <a href="/#contacto">Contacto</a>
+          <Link href="/#inicio">Inicio</Link>
+          <Link href="/#proyectos">Proyectos</Link>
+          <Link href="/#capacidades">Capacidades</Link>
+          <Link href="/#metodo">Método</Link>
+          <Link href="/#contacto">Contacto</Link>
         </div>
       </div>
 
       <div
-        className="site-footer__word"
         aria-hidden="true"
+        className="site-footer__word"
       >
         <span>B</span>
         <span>R</span>
@@ -51,9 +96,9 @@ export default function Footer() {
       <div className="site-footer__bottom">
         <span>© {currentYear} BRHN</span>
 
-        <a href="/#inicio">
-          Volver al inicio ↑
-        </a>
+        <Link href="/#inicio">
+          Volver arriba ↑
+        </Link>
       </div>
     </footer>
   );

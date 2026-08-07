@@ -1,6 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import {
+  FormEvent,
+  useState,
+} from "react";
 
 const serviceOptions = [
   "Diseño de espacios",
@@ -11,100 +14,110 @@ const serviceOptions = [
   "Aún no estoy seguro",
 ];
 
-const WHATSAPP_NUMBER = "5213323124060";
-const CONTACT_EMAIL = "brhn.estudio@gmail.com";
-
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] =
+    useState<"whatsapp" | "email" | null>(null);
 
-  const buildMessage = (form: HTMLFormElement) => {
+  const readForm = (
+    form: HTMLFormElement,
+  ) => {
     const formData = new FormData(form);
 
-    const name = String(formData.get("name") ?? "").trim();
-    const company = String(formData.get("company") ?? "").trim();
-    const phone = String(formData.get("phone") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const service = String(formData.get("service") ?? "").trim();
-    const comments = String(formData.get("comments") ?? "").trim();
-
-    const subject = `Nuevo proyecto BRHN — ${
-      service || "Consulta general"
-    }`;
-
-    const message = [
-      "Hola BRHN 👋",
-      "",
-      "Me gustaría platicar sobre un proyecto.",
-      "",
-      `Nombre: ${name}`,
-      `Empresa o proyecto: ${company || "No especificado"}`,
-      `Teléfono: ${phone}`,
-      `Correo: ${email}`,
-      `Interés: ${service || "No especificado"}`,
-      "",
-      "Comentarios:",
-      comments || "Sin comentarios adicionales.",
-    ].join("\n");
-
     return {
-      subject,
-      message,
+      name: String(formData.get("name") ?? ""),
+      company: String(formData.get("company") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      service: String(formData.get("service") ?? ""),
+      comments: String(formData.get("comments") ?? ""),
     };
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const buildMessage = (
+    data: ReturnType<typeof readForm>,
+  ) =>
+    [
+      "Hola BRHN,",
+      "",
+      "Me gustaría platicar sobre un proyecto.",
+      "",
+      `Nombre: ${data.name}`,
+      `Empresa o proyecto: ${data.company || "No especificado"}`,
+      `Teléfono: ${data.phone}`,
+      `Correo: ${data.email}`,
+      `Interés: ${data.service}`,
+      "",
+      "Comentarios:",
+      data.comments || "Sin comentarios adicionales.",
+    ].join("\n");
+
+  const handleWhatsApp = (
+    event: FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
 
     const form = event.currentTarget;
-    const { message } = buildMessage(form);
 
-    setSubmitted(true);
+    if (!form.reportValidity()) {
+      return;
+    }
 
-    const whatsappUrl =
-      `https://wa.me/${WHATSAPP_NUMBER}` +
-      `?text=${encodeURIComponent(message)}`;
+    const data = readForm(form);
+    const message = encodeURIComponent(
+      buildMessage(data),
+    );
+
+    setSubmitted("whatsapp");
 
     window.open(
-      whatsappUrl,
+      `https://wa.me/523323124060?text=${message}`,
       "_blank",
       "noopener,noreferrer",
     );
   };
 
   const handleEmail = () => {
-    const form = document.querySelector(
-      ".contact-form",
-    ) as HTMLFormElement | null;
+    const form =
+      document.querySelector<HTMLFormElement>(
+        ".contact-form",
+      );
 
-    if (!form) return;
+    if (!form || !form.reportValidity()) {
+      return;
+    }
 
-    if (!form.reportValidity()) return;
+    const data = readForm(form);
 
-    const { subject, message } = buildMessage(form);
+    const subject = encodeURIComponent(
+      `Nuevo proyecto BRHN — ${data.service || "Consulta general"}`,
+    );
 
-    const mailtoUrl =
-      `mailto:${CONTACT_EMAIL}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(message)}`;
+    const body = encodeURIComponent(
+      buildMessage(data),
+    );
 
-    window.location.href = mailtoUrl;
+    setSubmitted("email");
+
+    window.location.href =
+      `mailto:brhn.estudio@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
     <form
       className="contact-form"
-      onSubmit={handleSubmit}
+      id="contacto"
+      onSubmit={handleWhatsApp}
     >
       <div className="contact-form__grid">
         <label className="contact-form__field">
           <span>Nombre *</span>
 
           <input
-            type="text"
+            autoComplete="name"
             name="name"
             placeholder="Tu nombre"
-            autoComplete="name"
             required
+            type="text"
           />
         </label>
 
@@ -112,10 +125,10 @@ export default function ContactForm() {
           <span>Empresa o proyecto</span>
 
           <input
-            type="text"
+            autoComplete="organization"
             name="company"
             placeholder="Nombre de tu proyecto"
-            autoComplete="organization"
+            type="text"
           />
         </label>
 
@@ -123,11 +136,11 @@ export default function ContactForm() {
           <span>Teléfono *</span>
 
           <input
-            type="tel"
+            autoComplete="tel"
             name="phone"
             placeholder="+52 33 0000 0000"
-            autoComplete="tel"
             required
+            type="tel"
           />
         </label>
 
@@ -135,11 +148,11 @@ export default function ContactForm() {
           <span>Correo *</span>
 
           <input
-            type="email"
+            autoComplete="email"
             name="email"
             placeholder="nombre@correo.com"
-            autoComplete="email"
             required
+            type="email"
           />
         </label>
 
@@ -147,13 +160,13 @@ export default function ContactForm() {
           <span>¿Qué te interesa? *</span>
 
           <select
-            name="service"
             defaultValue=""
+            name="service"
             required
           >
             <option
-              value=""
               disabled
+              value=""
             >
               Selecciona una opción
             </option>
@@ -174,25 +187,25 @@ export default function ContactForm() {
 
           <textarea
             name="comments"
-            rows={4}
             placeholder="¿Qué quieres crear, mejorar o transformar?"
+            rows={4}
           />
         </label>
       </div>
 
       <div className="contact-form__actions">
         <button
-          type="submit"
           className="contact-form__submit"
+          type="submit"
         >
           <span>Enviar por WhatsApp</span>
           <span aria-hidden="true">↗</span>
         </button>
 
         <button
-          type="button"
           className="contact-form__email"
           onClick={handleEmail}
+          type="button"
         >
           <span>Enviar por correo</span>
           <span aria-hidden="true">↗</span>
@@ -201,7 +214,9 @@ export default function ContactForm() {
 
       {submitted && (
         <p className="contact-form__message">
-          Abrimos WhatsApp con la información lista para enviar.
+          {submitted === "whatsapp"
+            ? "Abrimos WhatsApp con la información lista para enviar."
+            : "Abrimos tu aplicación de correo con la información lista para enviar."}
         </p>
       )}
     </form>

@@ -7,7 +7,12 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 type PathwayId =
   | "escuchamos"
@@ -22,6 +27,7 @@ type Pathway = {
   subtitle: string;
   description: string;
   className: string;
+
   items: {
     number: string;
     title: string;
@@ -60,6 +66,7 @@ const pathways: Pathway[] = [
       },
     ],
   },
+
   {
     id: "alineamos",
     number: "02",
@@ -90,6 +97,7 @@ const pathways: Pathway[] = [
       },
     ],
   },
+
   {
     id: "construimos",
     number: "03",
@@ -123,7 +131,8 @@ const pathways: Pathway[] = [
 ];
 
 export default function DesignPortal() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef =
+    useRef<HTMLElement>(null);
 
   const [activePathway, setActivePathway] =
     useState<Pathway | null>(null);
@@ -133,136 +142,217 @@ export default function DesignPortal() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: [
+      "start start",
+      "end end",
+    ],
   });
 
-  /* Frame */
+  /* =======================================================
+     FRAME
+  ======================================================= */
 
   const frameWidth = useTransform(
     scrollYProgress,
     [0, 0.26],
     ["86vw", "100vw"],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const frameHeight = useTransform(
     scrollYProgress,
     [0, 0.26],
     ["78vh", "100vh"],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const frameRadius = useTransform(
     scrollYProgress,
     [0, 0.26],
     [34, 0],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const frameY = useTransform(
     scrollYProgress,
     [0, 0.26],
     [62, 0],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
-  /* Manifiesto */
+  /* =======================================================
+     MANIFIESTO
+  ======================================================= */
 
   const statementOpacity = useTransform(
     scrollYProgress,
-    [0.07, 0.18, 0.36, 0.46],
-    [0, 1, 1, 0],
-    { clamp: true },
+    [
+      0.07,
+      0.18,
+      0.36,
+      0.46,
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+    ],
+    {
+      clamp: true,
+    },
   );
 
   const statementY = useTransform(
     scrollYProgress,
-    [0.07, 0.2, 0.46],
-    [70, 0, -70],
-    { clamp: true },
+    [
+      0.07,
+      0.2,
+      0.46,
+    ],
+    [
+      70,
+      0,
+      -70,
+    ],
+    {
+      clamp: true,
+    },
   );
 
   const statementScale = useTransform(
     scrollYProgress,
-    [0.2, 0.46],
-    [1, 0.92],
-    { clamp: true },
+    [
+      0.2,
+      0.46,
+    ],
+    [
+      1,
+      0.92,
+    ],
+    {
+      clamp: true,
+    },
   );
 
-  /* Tarjetas */
+  /* =======================================================
+     TARJETAS
+  ======================================================= */
 
-  const cardsEntranceOpacity = useTransform(
-    scrollYProgress,
-    [0.4, 0.56],
-    [0, 1],
-    { clamp: true },
-  );
+  const cardsEntranceOpacity =
+    useTransform(
+      scrollYProgress,
+      [0.4, 0.56],
+      [0, 1],
+      {
+        clamp: true,
+      },
+    );
 
   const cardsY = useTransform(
     scrollYProgress,
     [0.4, 0.82],
     [160, 0],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const cardsScale = useTransform(
     scrollYProgress,
     [0.4, 0.82],
     [0.86, 1],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const firstCardX = useTransform(
     scrollYProgress,
     [0.48, 0.9],
     ["68%", "0%"],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const secondCardY = useTransform(
     scrollYProgress,
     [0.48, 0.9],
     ["18%", "0%"],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
   const thirdCardX = useTransform(
     scrollYProgress,
     [0.48, 0.9],
     ["-68%", "0%"],
-    { clamp: true },
+    {
+      clamp: true,
+    },
   );
 
-  const finalContentOpacity = useTransform(
-    scrollYProgress,
-    [0.76, 0.9],
-    [0, 1],
-    { clamp: true },
-  );
+  const finalContentOpacity =
+    useTransform(
+      scrollYProgress,
+      [0.76, 0.9],
+      [0, 1],
+      {
+        clamp: true,
+      },
+    );
+
+  /* =======================================================
+     LOCK FINAL
+  ======================================================= */
 
   useMotionValueEvent(
     scrollYProgress,
     "change",
     (progress) => {
-      if (progress >= 0.88 && !cardsLocked) {
+      if (
+        progress >= 0.88 &&
+        !cardsLocked
+      ) {
         setCardsLocked(true);
       }
 
-      if (progress <= 0.42 && cardsLocked) {
+      if (
+        progress <= 0.42 &&
+        cardsLocked
+      ) {
         setCardsLocked(false);
       }
     },
   );
 
+  /* =======================================================
+     MODAL
+  ======================================================= */
+
   useEffect(() => {
     if (!activePathway) {
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
       return;
     }
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+      "hidden";
 
-    const handleKeyDown = (event: KeyboardEvent) => {
+    const handleKeyDown = (
+      event: KeyboardEvent,
+    ) => {
       if (event.key === "Escape") {
         setActivePathway(null);
       }
@@ -274,7 +364,8 @@ export default function DesignPortal() {
     );
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
 
       window.removeEventListener(
         "keydown",
@@ -301,8 +392,13 @@ export default function DesignPortal() {
             }}
           >
             <div className="design-portal__topbar">
-              <span>BRHN / Nuestro proceso</span>
-              <span>Del contexto a la solución</span>
+              <span>
+                BRHN / Nuestro proceso
+              </span>
+
+              <span>
+                Del contexto a la solución
+              </span>
             </div>
 
             <motion.div
@@ -314,33 +410,43 @@ export default function DesignPortal() {
               }}
             >
               <p>
-                Cada proyecto comienza con una conversación
+                Cada proyecto comienza con
+                una conversación
               </p>
 
               <h2>
                 Escuchamos antes
                 <br />
-                <span>de diseñar.</span>
+
+                <span>
+                  de diseñar.
+                </span>
               </h2>
 
               <p className="design-portal__statement-copy">
-                Entendemos, alineamos y construimos cada
-                solución de la mano contigo.
+                Entendemos, alineamos y
+                construimos cada solución
+                de la mano contigo.
               </p>
             </motion.div>
 
             <motion.div
               className="design-portal__section-title"
               style={{
-                opacity: cardsLocked
-                  ? 1
-                  : finalContentOpacity,
+                opacity:
+                  cardsLocked
+                    ? 1
+                    : finalContentOpacity,
               }}
             >
-              <span>01</span>
+              <span>
+                01
+              </span>
 
               <div>
-                <p>Nuestra metodología</p>
+                <p>
+                  Nuestra metodología
+                </p>
 
                 <h2>
                   Escuchar. Alinear.
@@ -353,79 +459,115 @@ export default function DesignPortal() {
             <motion.div
               className="design-portal__cards"
               style={{
-                opacity: cardsLocked
-                  ? 1
-                  : cardsEntranceOpacity,
-                y: cardsLocked ? 0 : cardsY,
-                scale: cardsLocked
-                  ? 1
-                  : cardsScale,
+                opacity:
+                  cardsLocked
+                    ? 1
+                    : cardsEntranceOpacity,
+
+                y:
+                  cardsLocked
+                    ? 0
+                    : cardsY,
+
+                scale:
+                  cardsLocked
+                    ? 1
+                    : cardsScale,
               }}
             >
-              {pathways.map((pathway, index) => {
-                const animatedMovement =
-                  index === 0
-                    ? { x: firstCardX }
-                    : index === 1
-                      ? { y: secondCardY }
-                      : { x: thirdCardX };
+              {pathways.map(
+                (
+                  pathway,
+                  index,
+                ) => {
+                  const animatedMovement =
+                    index === 0
+                      ? {
+                          x: firstCardX,
+                        }
+                      : index === 1
+                        ? {
+                            y: secondCardY,
+                          }
+                        : {
+                            x: thirdCardX,
+                          };
 
-                const lockedMovement =
-                  index === 1
-                    ? { y: 0 }
-                    : { x: 0 };
+                  const lockedMovement =
+                    index === 1
+                      ? {
+                          y: 0,
+                        }
+                      : {
+                          x: 0,
+                        };
 
-                return (
-                  <motion.button
-                    key={pathway.id}
-                    layoutId={`pathway-${pathway.id}`}
-                    type="button"
-                    className={`design-card ${pathway.className}`}
-                    style={
-                      cardsLocked
-                        ? lockedMovement
-                        : animatedMovement
-                    }
-                    onClick={() =>
-                      setActivePathway(pathway)
-                    }
-                    whileHover={{
-                      y: -8,
-                      rotate:
-                        index === 0
-                          ? -0.35
-                          : index === 2
-                            ? 0.35
-                            : 0,
-                    }}
-                    whileTap={{
-                      scale: 0.985,
-                    }}
-                    transition={{
-                      layout: {
-                        duration: 0.72,
-                        ease: [0.76, 0, 0.24, 1],
-                      },
-                      duration: 0.28,
-                    }}
-                  >
-                    <CardContent
-                      pathway={pathway}
-                    />
-                  </motion.button>
-                );
-              })}
+                  return (
+                    <motion.button
+                      key={pathway.id}
+                      layoutId={`pathway-${pathway.id}`}
+                      type="button"
+                      className={`design-card ${pathway.className}`}
+                      style={
+                        cardsLocked
+                          ? lockedMovement
+                          : animatedMovement
+                      }
+                      onClick={() =>
+                        setActivePathway(
+                          pathway,
+                        )
+                      }
+                      whileHover={{
+                        y: -8,
+
+                        rotate:
+                          index === 0
+                            ? -0.35
+                            : index === 2
+                              ? 0.35
+                              : 0,
+                      }}
+                      whileTap={{
+                        scale: 0.985,
+                      }}
+                      transition={{
+                        layout: {
+                          duration: 0.72,
+
+                          ease: [
+                            0.76,
+                            0,
+                            0.24,
+                            1,
+                          ],
+                        },
+
+                        duration: 0.28,
+                      }}
+                    >
+                      <CardContent
+                        pathway={
+                          pathway
+                        }
+                      />
+                    </motion.button>
+                  );
+                },
+              )}
             </motion.div>
 
             <motion.p
               className="design-portal__hint"
               style={{
-                opacity: cardsLocked
-                  ? 1
-                  : finalContentOpacity,
+                opacity:
+                  cardsLocked
+                    ? 1
+                    : finalContentOpacity,
               }}
             >
-              Selecciona una etapa para explorar
+              Selecciona una etapa para
+              explorar
             </motion.p>
           </motion.div>
         </div>
@@ -460,7 +602,13 @@ export default function DesignPortal() {
               transition={{
                 layout: {
                   duration: 0.72,
-                  ease: [0.76, 0, 0.24, 1],
+
+                  ease: [
+                    0.76,
+                    0,
+                    0.24,
+                    1,
+                  ],
                 },
               }}
               onClick={(event) =>
@@ -470,11 +618,16 @@ export default function DesignPortal() {
               <div className="pathway-expanded__top">
                 <div>
                   <span>
-                    {activePathway.number}
+                    {
+                      activePathway.number
+                    }
                   </span>
 
                   <span>
-                    BRHN / {activePathway.title}
+                    BRHN /{" "}
+                    {
+                      activePathway.title
+                    }
                   </span>
                 </div>
 
@@ -482,12 +635,21 @@ export default function DesignPortal() {
                   type="button"
                   className="pathway-expanded__close"
                   onClick={() =>
-                    setActivePathway(null)
+                    setActivePathway(
+                      null,
+                    )
                   }
                   aria-label={`Cerrar información de ${activePathway.title}`}
                 >
-                  <span>Cerrar</span>
-                  <span aria-hidden="true">×</span>
+                  <span>
+                    Cerrar
+                  </span>
+
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
                 </button>
               </div>
 
@@ -508,15 +670,21 @@ export default function DesignPortal() {
                   }}
                 >
                   <p>
-                    {activePathway.subtitle}
+                    {
+                      activePathway.subtitle
+                    }
                   </p>
 
                   <h2>
-                    {activePathway.title}
+                    {
+                      activePathway.title
+                    }
                   </h2>
 
                   <p>
-                    {activePathway.description}
+                    {
+                      activePathway.description
+                    }
                   </p>
                 </motion.div>
 
@@ -538,16 +706,28 @@ export default function DesignPortal() {
                   {activePathway.items.map(
                     (item) => (
                       <article
-                        key={item.number}
+                        key={
+                          item.number
+                        }
                         className="pathway-expanded__step"
                       >
-                        <span>{item.number}</span>
+                        <span>
+                          {
+                            item.number
+                          }
+                        </span>
 
                         <div>
-                          <h3>{item.title}</h3>
+                          <h3>
+                            {
+                              item.title
+                            }
+                          </h3>
 
                           <p>
-                            {item.description}
+                            {
+                              item.description
+                            }
                           </p>
                         </div>
                       </article>
@@ -560,7 +740,9 @@ export default function DesignPortal() {
                 className="pathway-expanded__letter"
                 aria-hidden="true"
               >
-                {activePathway.letter}
+                {
+                  activePathway.letter
+                }
               </div>
             </motion.article>
           </motion.div>
@@ -578,26 +760,42 @@ function CardContent({
   return (
     <>
       <div className="design-card__top">
-        <span>{pathway.number}</span>
-        <span>BRHN</span>
+        <span>
+          {pathway.number}
+        </span>
+
+        <span>
+          BRHN
+        </span>
       </div>
 
       <div
         className="design-card__graphic"
         aria-hidden="true"
       >
-        <span>{pathway.letter}</span>
+        <span>
+          {pathway.letter}
+        </span>
       </div>
 
       <div className="design-card__content">
-        <p>{pathway.subtitle}</p>
+        <p>
+          {pathway.subtitle}
+        </p>
 
         <div className="design-card__title-row">
-          <h3>{pathway.title}</h3>
-          <span aria-hidden="true">↗</span>
+          <h3>
+            {pathway.title}
+          </h3>
+
+          <span aria-hidden="true">
+            ↗
+          </span>
         </div>
 
-        <p>{pathway.description}</p>
+        <p>
+          {pathway.description}
+        </p>
       </div>
     </>
   );

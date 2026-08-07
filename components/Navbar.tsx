@@ -1,40 +1,43 @@
-"use client";
+import Link from "next/link";
 
-import { motion } from "motion/react";
-
-const links = [
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Capacidades", href: "#capacidades" },
-  { label: "Método", href: "#metodo" },
-  { label: "Contacto", href: "#contacto" },
+const navItems = [
+  { label: "Proyectos", href: "/#proyectos" },
+  { label: "Capacidades", href: "/#capacidades" },
+  { label: "Método", href: "/#metodo" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export default function Navbar() {
   return (
-    <motion.header
-      className="navbar"
-      initial={{ opacity: 0, y: -24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-    >
-    <a href="/#inicio" className="navbar__logo">
-  BRHN
-</a>
+    <header className="navbar">
+      <Link
+        aria-label="BRHN — volver al inicio"
+        className="navbar__brand"
+        href="/#inicio"
+      >
+        BRHN
+      </Link>
 
-      <nav className="navbar__links" aria-label="Navegación principal">
-        {links.map((link) => (
-          <a key={link.href} href={link.href}>
-            {link.label}
-          </a>
+      <nav
+        aria-label="Navegación principal"
+        className="navbar__links"
+      >
+        {navItems.map((item) => (
+          <Link
+            href={item.href}
+            key={item.href}
+          >
+            {item.label}
+          </Link>
         ))}
       </nav>
 
-      <a href="#contacto" className="navbar__cta">
+      <Link
+        className="navbar__cta"
+        href="/#contacto"
+      >
         Iniciar proyecto
-      </a>
-    </motion.header>
+      </Link>
+    </header>
   );
 }

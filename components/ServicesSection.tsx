@@ -166,7 +166,7 @@ export default function ServicesSection() {
     <>
       <section
         className="services-section"
-        id="servicios"
+        id="capacidades"
       >
         <div className="content-section__top">
           <span>03</span>
@@ -175,8 +175,8 @@ export default function ServicesSection() {
 
         <div className="services-section__heading">
           <p>
-            Cuatro disciplinas conectadas para desarrollar soluciones
-            completas.
+            Cuatro disciplinas conectadas para desarrollar
+            soluciones completas.
           </p>
 
           <h2>
@@ -186,12 +186,17 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        <div className="services-grid">
+        <div
+          className="services-grid"
+          id="proyectos"
+        >
           {services.map((service) => (
             <button
               className="service-card"
               key={service.id}
-              onClick={() => setActiveService(service)}
+              onClick={() =>
+                setActiveService(service)
+              }
               type="button"
             >
               <div className="service-card__top">
@@ -246,7 +251,9 @@ export default function ServicesSection() {
             <header className="service-modal__top">
               <div>
                 <span>{activeService.number}</span>
-                <span>Servicios / {activeService.title}</span>
+                <span>
+                  Servicios / {activeService.title}
+                </span>
               </div>
 
               <button
@@ -264,9 +271,7 @@ export default function ServicesSection() {
                 <div className="service-modal__content">
                   <div className="service-modal__intro">
                     <p>{activeService.subtitle}</p>
-
                     <h2>{activeService.headline}</h2>
-
                     <p>{activeService.detail}</p>
                   </div>
 
@@ -293,7 +298,9 @@ export default function ServicesSection() {
                         onClick={goToContact}
                         type="button"
                       >
-                        <span>Platicar sobre este servicio</span>
+                        <span>
+                          Platicar sobre este servicio
+                        </span>
                         <span aria-hidden="true">↘</span>
                       </button>
                     </div>
@@ -344,7 +351,9 @@ export default function ServicesSection() {
 
                           <div className="service-project__image-top">
                             <span>{project.number}</span>
-                            <span>BRHN / Caso seleccionado</span>
+                            <span>
+                              BRHN / Caso seleccionado
+                            </span>
                           </div>
 
                           <h4>{project.title}</h4>
@@ -353,7 +362,6 @@ export default function ServicesSection() {
                         <div className="service-project__information">
                           <div>
                             <span>{project.category}</span>
-
                             <p>{project.description}</p>
                           </div>
 
@@ -380,7 +388,9 @@ export default function ServicesSection() {
                               onClick={goToContact}
                               type="button"
                             >
-                              <span>Hablar sobre un proyecto similar</span>
+                              <span>
+                                Tengo un proyecto similar
+                              </span>
                               <span aria-hidden="true">↗</span>
                             </button>
                           </div>
