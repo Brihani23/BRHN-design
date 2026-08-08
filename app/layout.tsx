@@ -6,6 +6,7 @@ import {
 } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
-      "http://localhost:3000",
+      "https://brhn-design.vercel.app"
   ),
 
   openGraph: {
@@ -39,6 +40,15 @@ export const metadata: Metadata = {
       "Diseñamos lo que una idea necesita para existir.",
     type: "website",
     locale: "es_MX",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://brhn-design.vercel.app",
+    siteName: "BRHN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "BRHN — Casa de diseño integral",
+    description:
+      "Diseñamos lo que una idea necesita para existir.",
   },
 };
 
@@ -49,12 +59,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${geistSans.variable} ${geistMono.variable}`}
       lang="es"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
       <body>
         {children}
+
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
