@@ -1870,7 +1870,10 @@ ul {
 
 .service-project__image {
   aspect-ratio: 16 / 9.7;
-  background: transparent;
+  align-items: center;
+  background: var(--cream);
+  display: flex;
+  justify-content: center;
   overflow: hidden;
   position: relative;
 }
@@ -1878,7 +1881,7 @@ ul {
 .service-project__image img {
   display: block;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
   width: 100%;
