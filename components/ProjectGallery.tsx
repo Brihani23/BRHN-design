@@ -13,26 +13,18 @@ export default function ProjectGallery({
 }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const closeLightbox = () => {
-    setActiveIndex(null);
-  };
+  const closeLightbox = () => setActiveIndex(null);
 
   const showPrevious = () => {
     setActiveIndex((current) => {
-      if (current === null || images.length === 0) {
-        return null;
-      }
-
+      if (current === null || images.length === 0) return null;
       return current === 0 ? images.length - 1 : current - 1;
     });
   };
 
   const showNext = () => {
     setActiveIndex((current) => {
-      if (current === null || images.length === 0) {
-        return null;
-      }
-
+      if (current === null || images.length === 0) return null;
       return current === images.length - 1 ? 0 : current + 1;
     });
   };
@@ -46,17 +38,9 @@ export default function ProjectGallery({
     document.body.style.overflow = "hidden";
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-
-      if (event.key === "ArrowLeft") {
-        showPrevious();
-      }
-
-      if (event.key === "ArrowRight") {
-        showNext();
-      }
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showPrevious();
+      if (event.key === "ArrowRight") showNext();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -65,11 +49,9 @@ export default function ProjectGallery({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIndex]);
+  }, [activeIndex, images.length]);
 
-  if (images.length === 0) {
-    return null;
-  }
+  if (images.length === 0) return null;
 
   return (
     <>
@@ -77,11 +59,7 @@ export default function ProjectGallery({
         {images.map((image, index) => (
           <button
             aria-label={`Abrir imagen ${index + 1} de ${title}`}
-            className={
-              index === 0
-                ? "project-page__gallery-item project-page__gallery-item--wide"
-                : "project-page__gallery-item"
-            }
+            className="project-page__gallery-item"
             key={`${image}-${index}`}
             onClick={() => setActiveIndex(index)}
             type="button"

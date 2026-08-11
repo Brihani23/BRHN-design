@@ -5,10 +5,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProjectGallery from "@/components/ProjectGallery";
 
-import {
-  getProjectById,
-  projects,
-} from "../../../lib/projects";
+import { getProjectById, projects } from "../../../lib/projects";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -32,8 +29,7 @@ export default async function ProjectPage({
     notFound();
   }
 
-  const galleryImages =
-    project.images.slice(1);
+  const galleryImages = project.images.slice(1);
 
   return (
     <>

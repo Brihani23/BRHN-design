@@ -41,6 +41,7 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.005em;
   overflow-x: hidden;
 }
 
@@ -95,7 +96,7 @@ ul {
 .navbar__brand {
   font-size: 1.4rem;
   font-weight: 800;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.048em;
   line-height: 1;
 }
 
@@ -206,7 +207,7 @@ ul {
 .hero h1 {
   font-size: clamp(4rem, 9.8vw, 10rem);
   font-weight: 430;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.045em;
   line-height: 0.86;
   max-width: 10.4ch;
 }
@@ -318,7 +319,7 @@ ul {
 .design-portal__statement h2 {
   font-size: clamp(3.8rem, 8vw, 8.8rem);
   font-weight: 450;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.048em;
   line-height: 0.84;
 }
 
@@ -365,7 +366,7 @@ ul {
 .design-portal__section-title h2 {
   font-size: clamp(1.6rem, 2.7vw, 3rem);
   font-weight: 450;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
   line-height: 0.92;
   text-align: right;
 }
@@ -436,7 +437,7 @@ ul {
 .design-card__graphic span {
   font-size: clamp(7rem, 11vw, 12rem);
   font-weight: 500;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.048em;
   line-height: 0.85;
   opacity: 0.28;
   transform: rotate(-7deg);
@@ -465,7 +466,7 @@ ul {
 .design-card__title-row h3 {
   font-size: clamp(2.2rem, 3.3vw, 3.7rem);
   font-weight: 450;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
   line-height: 0.94;
 }
 
@@ -591,7 +592,7 @@ ul {
 .pathway-expanded__intro h2 {
   font-size: clamp(4.5rem, 8vw, 9rem);
   font-weight: 450;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.048em;
   line-height: 0.82;
 }
 
@@ -686,7 +687,7 @@ ul {
 .content-section__layout h2 {
   font-size: clamp(3.3rem, 5.7vw, 5.8rem);
   font-weight: 450;
-  letter-spacing: -0.072em;
+  letter-spacing: -0.052em;
   line-height: 0.88;
   max-width: 9ch;
 }
@@ -705,6 +706,7 @@ ul {
 .content-section--about {
   background: var(--cream);
   color: var(--ink);
+  padding-bottom: clamp(5.5rem, 7vw, 7.5rem);
 }
 
 .content-section__word {
@@ -753,7 +755,7 @@ ul {
 .services-section__heading h2 {
   font-size: clamp(3rem, 5.1vw, 5.2rem);
   font-weight: 450;
-  letter-spacing: -0.072em;
+  letter-spacing: -0.052em;
   line-height: 0.87;
   text-align: right;
 }
@@ -816,7 +818,7 @@ ul {
 .service-card__heading h3 {
   font-size: clamp(2.25rem, 2.8vw, 3rem);
   font-weight: 450;
-  letter-spacing: -0.062em;
+  letter-spacing: -0.048em;
   line-height: 0.92;
   margin-top: 0.55rem;
 }
@@ -988,7 +990,7 @@ ul {
 .service-modal__intro h2 {
   font-size: clamp(3rem, 4.7vw, 5.3rem);
   font-weight: 450;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
   line-height: 0.92;
   margin-top: 1.5rem;
   max-width: 9ch;
@@ -1103,7 +1105,7 @@ ul {
   color: var(--white);
   font-size: clamp(3rem, 4.8vw, 5rem);
   font-weight: 450;
-  letter-spacing: -0.072em;
+  letter-spacing: -0.052em;
   line-height: 0.87;
   margin-top: clamp(2.5rem, 4vw, 4rem);
   max-width: 8.5ch;
@@ -1833,7 +1835,7 @@ ul {
 .service-projects__header h3 {
   font-size: clamp(3rem, 6vw, 6.5rem);
   font-weight: 450;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.05em;
   line-height: 0.88;
   text-align: right;
 }
@@ -1846,32 +1848,29 @@ ul {
 }
 
 .service-project {
+  align-items: center;
   display: grid;
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(1.75rem, 3vw, 3.5rem);
   grid-template-columns:
-    minmax(0, 1.5fr)
-    minmax(20rem, 0.5fr);
+    minmax(0, 3fr)
+    minmax(15rem, 1fr);
 }
 
 .service-project:nth-child(even) {
   grid-template-columns:
-    minmax(20rem, 0.5fr)
-    minmax(0, 1.5fr);
+    minmax(0, 3fr)
+    minmax(15rem, 1fr);
 }
 
-.service-project:nth-child(even) .service-project__image {
-  grid-column: 2;
-  grid-row: 1;
-}
-
+.service-project:nth-child(even) .service-project__image,
 .service-project:nth-child(even) .service-project__information {
-  grid-column: 1;
-  grid-row: 1;
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .service-project__image {
-  aspect-ratio: 16 / 10;
-  background: var(--ink);
+  aspect-ratio: 16 / 9.7;
+  background: transparent;
   overflow: hidden;
   position: relative;
 }
@@ -1880,16 +1879,17 @@ ul {
   display: block;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
   width: 100%;
 }
 
 .service-project:hover .service-project__image img {
-  transform: scale(1.025);
+  transform: scale(1.018);
 }
 
 .service-project__image-overlay {
-  background: rgba(11, 24, 53, 0.14);
+  background: rgba(11, 24, 53, 0.08);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -1898,56 +1898,56 @@ ul {
 .service-project__image-top {
   color: var(--white);
   display: flex;
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   justify-content: space-between;
-  left: 1.25rem;
-  letter-spacing: 0.1em;
+  left: 1.15rem;
+  letter-spacing: 0.115em;
   position: absolute;
-  right: 1.25rem;
+  right: 1.15rem;
   text-transform: uppercase;
-  top: 1.25rem;
-}
-
-.service-project__image h4 {
-  bottom: 1rem;
-  color: var(--white);
-  font-size: clamp(3.5rem, 8vw, 8rem);
-  font-weight: 500;
-  left: 1.25rem;
-  letter-spacing: -0.08em;
-  line-height: 0.8;
-  position: absolute;
+  top: 1.15rem;
 }
 
 .service-project__information {
-  align-self: end;
+  align-self: center;
+  min-width: 0;
 }
 
 .service-project__information > div > span {
   display: block;
-  font-size: 0.63rem;
-  letter-spacing: 0.11em;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
   text-transform: uppercase;
 }
 
+.service-project__information h4 {
+  font-size: clamp(1.65rem, 2.35vw, 2.45rem);
+  font-weight: 450;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  margin-top: 1rem;
+}
+
 .service-project__information > div > p {
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
-  line-height: 1.55;
-  margin-top: 1.5rem;
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  line-height: 1.62;
+  margin-top: 1rem;
 }
 
 .service-project__information ul {
   border-top: 1px solid rgba(23, 26, 34, 0.28);
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .service-project__information li {
   align-items: center;
   border-bottom: 1px solid rgba(23, 26, 34, 0.18);
   display: flex;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   justify-content: space-between;
-  padding: 0.9rem 0;
+  letter-spacing: 0.015em;
+  padding: 0.78rem 0;
 }
 
 .service-project__information button,
@@ -1957,10 +1957,10 @@ ul {
   color: var(--white);
   cursor: pointer;
   display: flex;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   justify-content: space-between;
-  margin-top: 2rem;
-  padding: 1rem 1.1rem;
+  margin-top: 1.4rem;
+  padding: 0.9rem 1rem;
   width: 100%;
 }
 
@@ -1978,7 +1978,7 @@ ul {
 
 .service-projects__empty p {
   font-size: clamp(2.2rem, 5vw, 5rem);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.048em;
   line-height: 0.95;
   margin-top: 2rem;
 }
@@ -1988,12 +1988,10 @@ ul {
 ========================================================= */
 
 @media (max-width: 1000px) {
-  .service-project {
-    grid-template-columns: 1fr;
-  }
-
+  .service-project,
   .service-project:nth-child(even) {
-    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr);
   }
 
   .service-project:nth-child(even) .service-project__image,
@@ -2003,7 +2001,7 @@ ul {
   }
 
   .service-project__information {
-    max-width: 42rem;
+    max-width: none;
   }
 }
 
@@ -2058,20 +2056,21 @@ ul {
     padding-top: 4rem;
   }
 
-  .service-project {
+  .service-project,
+  .service-project:nth-child(even) {
     display: block;
   }
 
   .service-project__image {
-    aspect-ratio: 4 / 5;
-  }
-
-  .service-project__image h4 {
-    font-size: 18vw;
+    aspect-ratio: 16 / 11;
   }
 
   .service-project__information {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .service-project__information h4 {
+    font-size: clamp(1.7rem, 8vw, 2.25rem);
   }
 }
 /* ==========================================================
@@ -2103,28 +2102,33 @@ ul {
 }
 
 .trusted__heading {
-  align-items: center;
-  display: grid;
-  gap: clamp(2.5rem, 4vw, 4rem);
-  grid-template-columns:
-    minmax(0, 1fr)
-    minmax(18rem, 0.52fr);
-  margin-bottom: 1.25rem;
+  display: block;
+  margin-bottom: 1.65rem;
   padding: 0 var(--page-padding);
 }
 
 .trusted__heading h2 {
-  font-size: clamp(3.1rem, 5vw, 5rem);
+  font-size: clamp(3rem, 4.65vw, 4.8rem);
   font-weight: 500;
-  letter-spacing: -0.068em;
-  line-height: 0.89;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  max-width: none;
+  white-space: nowrap;
+}
+
+.trusted__heading h2 br {
+  display: none;
 }
 
 .trusted__heading p {
+  border-top: 1px solid rgba(17, 24, 39, 0.14);
   color: rgba(17, 24, 39, 0.62);
-  font-size: clamp(0.86rem, 0.95vw, 0.96rem);
-  line-height: 1.55;
-  max-width: 24rem;
+  font-size: clamp(0.84rem, 0.95vw, 0.96rem);
+  line-height: 1.6;
+  margin-top: 1.15rem;
+  max-width: none;
+  padding-top: 1rem;
+  width: 100%;
 }
 
 .trusted__marquee {
@@ -2177,8 +2181,148 @@ ul {
   to { transform: translateX(-50%); }
 }
 
+
 /* =========================================================
-   PÁGINA INDIVIDUAL DE PROYECTO — COMPACTA
+   SERVICIOS — INTRO + PROYECTO INTEGRAL
+========================================================= */
+
+.services-section__intro {
+  max-width: 20rem;
+}
+
+.services-section__intro > span {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+  opacity: 0.58;
+  text-transform: uppercase;
+}
+
+.services-section__intro > p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  max-width: 18rem;
+}
+
+.services-section__cross {
+  align-items: end;
+  border-top: 1px solid rgba(23, 26, 34, 0.24);
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.7fr);
+  margin-top: clamp(2rem, 3vw, 3rem);
+  padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.services-section__cross > div:first-child > span {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.7rem;
+  opacity: 0.55;
+  text-transform: uppercase;
+}
+
+.services-section__cross h3 {
+  font-size: clamp(1.7rem, 2.6vw, 2.8rem);
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  max-width: 18ch;
+}
+
+.services-section__cross > div:last-child p {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  max-width: 28rem;
+}
+
+.services-section__cross button {
+  align-items: center;
+  background: transparent;
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.72rem;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  padding: 0 0 0.7rem;
+  width: 100%;
+}
+
+.service-project__actions {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.service-project__case,
+.service-project__actions button {
+  align-items: center;
+  display: flex;
+  font-size: 0.72rem;
+  justify-content: space-between;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  width: 100%;
+}
+
+.service-project__case {
+  border: 1px solid rgba(23, 26, 34, 0.32);
+}
+
+.service-project__actions button {
+  background: var(--ink);
+  color: var(--white);
+  margin-top: 0;
+}
+
+/* El título del proyecto ya NO vive encima de la portada. */
+.service-project__image {
+  background: transparent;
+}
+
+.service-project__image img {
+  object-position: center;
+}
+
+/* =========================================================
+   QUIÉNES SOMOS — CAPAS SIN SUPERPOSICIÓN
+========================================================= */
+
+.content-section--about .content-section__layout,
+.content-section--about .content-section__top {
+  position: relative;
+  z-index: 2;
+}
+
+.content-section--about .content-section__word {
+  bottom: 0.35rem;
+  font-size: clamp(5.5rem, 10.5vw, 9.5rem);
+  left: var(--page-padding);
+  letter-spacing: 0.055em;
+  line-height: 0.72;
+  opacity: 0.038;
+  right: auto;
+  z-index: 0;
+}
+
+/* =========================================================
+   ANCLAS
+========================================================= */
+
+#inicio,
+#proyectos,
+#capacidades,
+#metodo,
+#contacto {
+  scroll-margin-top: 4.5rem;
+}
+
+/* =========================================================
+   PÁGINA INDIVIDUAL DE PROYECTO — ÚNICA VERSIÓN
 ========================================================= */
 
 .project-page {
@@ -2188,113 +2332,146 @@ ul {
   overflow: hidden;
 }
 
-/* =========================================================
-   HERO DEL PROYECTO
-========================================================= */
+body:has(.project-page) .navbar {
+  color: var(--ink);
+}
+
+body:has(.project-page) .navbar__cta {
+  border-color: rgba(23, 26, 34, 0.35);
+}
 
 .project-page__hero {
-  min-height: auto;
-  padding:
-    6.25rem
-    var(--page-padding)
-    clamp(3rem, 5vw, 5rem);
+  padding: 6rem var(--page-padding) 3rem;
 }
 
 .project-page__top {
-  border-bottom: 1px solid rgba(23, 26, 34, 0.25);
+  border-bottom: 1px solid rgba(23, 26, 34, 0.22);
   display: flex;
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   justify-content: space-between;
-  letter-spacing: 0.1em;
-  padding-bottom: 0.9rem;
+  letter-spacing: 0.11em;
+  padding-bottom: 0.8rem;
   text-transform: uppercase;
 }
 
 .project-page__heading {
   align-items: end;
   display: grid;
-  gap: clamp(2rem, 5vw, 5rem);
-  grid-template-columns:
-    minmax(0, 1.1fr)
-    minmax(18rem, 0.55fr);
-  margin-top: clamp(2.75rem, 5vw, 4.75rem);
+  gap: clamp(3rem, 7vw, 8rem);
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.48fr);
+  margin-top: 2.5rem;
 }
 
-.project-page__heading > div > p {
-  font-size: 0.65rem;
+.project-page__title > p {
+  font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.project-page__heading h1 {
-  font-size: clamp(4rem, 7.8vw, 7.4rem);
+.project-page__title h1 {
+  font-size: clamp(3.7rem, 5.3vw, 5.8rem);
   font-weight: 450;
-  letter-spacing: -0.078em;
-  line-height: 0.84;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
   margin-top: 1rem;
+  max-width: 11ch;
 }
 
-.project-page__heading > p {
-  font-size: clamp(0.95rem, 1.12vw, 1.08rem);
-  line-height: 1.58;
-  max-width: 30rem;
+.project-page__description {
+  font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+  line-height: 1.55;
+  max-width: 34rem;
 }
 
+.project-page__meta {
+  border-bottom: 1px solid rgba(23, 26, 34, 0.18);
+  border-top: 1px solid rgba(23, 26, 34, 0.18);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 2rem auto 0;
+  max-width: 72rem;
+  width: 100%;
+}
+
+.project-page__meta > div {
+  border-right: 1px solid rgba(23, 26, 34, 0.18);
+  min-width: 0;
+  padding: 0.8rem 1rem;
+}
+
+.project-page__meta > div:last-child {
+  border-right: 0;
+}
+
+.project-page__meta span {
+  display: block;
+  font-size: 0.5rem;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.35rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.project-page__meta p {
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+/* Portada centrada, limpia y con más presencia. */
 .project-page__cover {
-  aspect-ratio: 16 / 7;
-  background: rgba(23, 26, 34, 0.06);
-  margin-top: clamp(2.75rem, 5vw, 4.75rem);
-  max-height: 40rem;
-  overflow: hidden;
-  position: relative;
+  align-items: center;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  margin: 2.6rem auto 0;
+  max-width: 78rem;
+  overflow: visible;
+  padding: 0;
+  width: 100%;
 }
 
 .project-page__cover img {
   display: block;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 43rem;
+  max-width: min(100%, 74rem);
+  object-fit: contain;
   object-position: center;
-  width: 100%;
+  width: auto;
 }
-
-/* =========================================================
-   CONTEXTO / RESUMEN
-========================================================= */
 
 .project-page__summary {
   background: var(--ink);
   color: var(--white);
-  padding:
-    clamp(4rem, 6vw, 6rem)
-    var(--page-padding);
+  padding: clamp(3.5rem, 5vw, 5rem) var(--page-padding);
 }
 
-.project-page__summary > div:first-child > span {
+.project-page__summary-heading > span {
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
-.project-page__summary > div:first-child h2 {
-  font-size: clamp(3rem, 5.2vw, 5.4rem);
+.project-page__summary-heading h2 {
+  font-size: clamp(2.8rem, 4.5vw, 4.7rem);
   font-weight: 450;
-  letter-spacing: -0.068em;
-  line-height: 0.88;
-  margin-top: 1rem;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  margin-top: 0.8rem;
 }
 
 .project-page__summary-grid {
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: clamp(2.75rem, 4vw, 4rem);
+  margin-top: 2.3rem;
 }
 
 .project-page__summary-grid article {
-  border-right: 1px solid rgba(255, 255, 255, 0.25);
-  min-height: 12.5rem;
-  padding: 1.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+  min-height: 9rem;
+  padding: 1.3rem 1.5rem;
 }
 
 .project-page__summary-grid article:first-child {
@@ -2308,447 +2485,120 @@ ul {
 
 .project-page__summary-grid article > span {
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   letter-spacing: 0.11em;
-  opacity: 0.72;
+  opacity: 0.7;
   text-transform: uppercase;
 }
 
 .project-page__summary-grid p {
-  font-size: clamp(0.92rem, 1.08vw, 1.02rem);
-  line-height: 1.62;
-  margin-top: 1.2rem;
-  max-width: 27rem;
+  font-size: clamp(0.86rem, 1vw, 0.98rem);
+  line-height: 1.58;
+  margin-top: 1rem;
+  max-width: 28rem;
 }
 
 /* =========================================================
-   GALERÍA
+   GALERÍA — COLLAGE EDITORIAL
 ========================================================= */
 
 .project-page__gallery {
   background: var(--cream);
-  padding:
-    clamp(4rem, 6vw, 6rem)
-    var(--page-padding);
+  padding: clamp(3rem, 5vw, 4.5rem) var(--page-padding) clamp(4rem, 6vw, 5.5rem);
 }
 
 .project-page__gallery-top {
-  border-bottom: 1px solid rgba(23, 26, 34, 0.25);
+  border-bottom: 1px solid rgba(23, 26, 34, 0.22);
   display: flex;
-  font-size: 0.62rem;
+  font-size: 0.56rem;
   justify-content: space-between;
-  letter-spacing: 0.1em;
-  padding-bottom: 0.9rem;
+  letter-spacing: 0.11em;
+  padding-bottom: 0.8rem;
   text-transform: uppercase;
 }
 
 .project-page__gallery-grid {
   display: grid;
-  gap: clamp(0.85rem, 1.5vw, 1.5rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(2.5rem, 4vw, 4rem);
+  gap: clamp(0.75rem, 1.15vw, 1.1rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 2.15rem auto 0;
+  max-width: 68rem;
 }
 
 .project-page__gallery-item {
-  aspect-ratio: 4 / 3;
-  background: rgba(23, 26, 34, 0.06);
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: zoom-in;
+  display: block;
   overflow: hidden;
+  padding: 0;
+  width: 100%;
 }
 
-.project-page__gallery-item--wide {
-  aspect-ratio: 16 / 7;
+.project-page__gallery-item:nth-child(1) {
   grid-column: 1 / -1;
+}
+
+.project-page__gallery-item:nth-child(n + 2) {
+  grid-column: span 1;
 }
 
 .project-page__gallery-item img {
   display: block;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-  width: 100%;
-}
-
-.project-page__gallery-item:hover img {
-  transform: scale(1.02);
-}
-
-/* =========================================================
-   CIERRE DEL PROYECTO
-========================================================= */
-
-.project-page__closing {
-  background: var(--orange);
-  color: var(--white);
-  min-height: auto;
-  padding:
-    clamp(4.5rem, 7vw, 7rem)
-    var(--page-padding);
-}
-
-.project-page__closing > p {
-  font-size: 0.66rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-}
-
-.project-page__closing h2 {
-  font-size: clamp(3.6rem, 7vw, 7rem);
-  font-weight: 450;
-  letter-spacing: -0.078em;
-  line-height: 0.84;
-  margin-top: clamp(2.25rem, 4vw, 4rem);
-}
-
-.project-page__closing a {
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
-  display: flex;
-  font-size: clamp(1.4rem, 2.5vw, 2.6rem);
-  justify-content: space-between;
-  margin-left: auto;
-  margin-top: clamp(3rem, 5vw, 5rem);
-  padding-bottom: 0.9rem;
-  transition:
-    opacity 220ms ease,
-    transform 220ms ease;
-  width: min(100%, 34rem);
-}
-
-.project-page__closing a:hover {
-  opacity: 0.75;
-  transform: translateY(-3px);
-}
-
-/* =========================================================
-   NAVBAR DENTRO DE PROYECTOS
-========================================================= */
-
-.project-page ~ * {
-  position: relative;
-}
-
-body:has(.project-page) .navbar {
-  color: var(--ink);
-}
-
-body:has(.project-page) .navbar__cta {
-  border-color: rgba(23, 26, 34, 0.35);
-}
-
-/* =========================================================
-   PROYECTO — TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-  .project-page__heading {
-    gap: 2.5rem;
-    grid-template-columns: 1fr;
-  }
-
-  .project-page__heading h1 {
-    font-size: clamp(4rem, 14vw, 7rem);
-  }
-
-  .project-page__heading > p {
-    max-width: 42rem;
-  }
-
-  .project-page__cover {
-    aspect-ratio: 16 / 9;
-  }
-
-  .project-page__summary-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-page__summary-grid article {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    border-right: 0;
-    min-height: auto;
-    padding: 2rem 0;
-  }
-
-  .project-page__summary-grid article:last-child {
-    border-bottom: 0;
-  }
-}
-
-/* =========================================================
-   PROYECTO — MOBILE
-========================================================= */
-
-@media (max-width: 650px) {
-  .project-page__hero {
-    min-height: auto;
-    padding:
-      5.5rem
-      var(--page-padding)
-      3.5rem;
-  }
-
-  .project-page__heading {
-    margin-top: 3rem;
-  }
-
-  .project-page__heading h1 {
-    font-size: clamp(3.6rem, 17vw, 5.8rem);
-    overflow-wrap: anywhere;
-  }
-
-  .project-page__cover {
-    aspect-ratio: 4 / 5;
-    margin-top: 3rem;
-    max-height: none;
-  }
-
-  .project-page__summary {
-    padding:
-      4rem
-      var(--page-padding);
-  }
-
-  .project-page__gallery {
-    padding:
-      4rem
-      var(--page-padding);
-  }
-
-  .project-page__gallery-top {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .project-page__gallery-grid {
-    grid-template-columns: 1fr;
-    margin-top: 2.5rem;
-  }
-
-  .project-page__gallery-item,
-  .project-page__gallery-item--wide {
-    aspect-ratio: 4 / 5;
-    grid-column: auto;
-  }
-
-  .project-page__closing {
-    padding:
-      4.5rem
-      var(--page-padding);
-  }
-
-  .project-page__closing h2 {
-    font-size: clamp(3.6rem, 16vw, 5.5rem);
-  }
-
-  .project-page__closing a {
-    font-size: 1.35rem;
-    width: 100%;
-  }
-}
-/* =========================================================
-   OVERRIDES FINALES — PROYECTOS COMPACTOS + LIGHTBOX
-   Pegar AL FINAL de app/globals.css
-========================================================= */
-
-.project-page {
-  background: var(--cream);
-  color: var(--ink);
-  overflow: hidden;
-}
-
-.project-page__shell {
-  margin: 0 auto;
-  max-width: 64rem;
-  width: 100%;
-}
-
-.project-page__hero {
-  padding: 5.5rem var(--page-padding) 2.75rem;
-}
-
-.project-page__top {
-  border-bottom: 1px solid rgba(23, 26, 34, 0.22);
-  display: flex;
-  font-size: 0.58rem;
-  justify-content: space-between;
-  letter-spacing: 0.11em;
-  padding-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.project-page__heading {
-  align-items: end;
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.48fr);
-  margin-top: 2.5rem;
-}
-
-.project-page__title > p {
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
-.project-page__title h1 {
-  font-size: clamp(2.9rem, 4.8vw, 4.8rem);
-  font-weight: 450;
-  letter-spacing: -0.072em;
-  line-height: 0.9;
-  margin-top: 0.75rem;
-  max-width: 11ch;
-}
-
-.project-page__description {
-  font-size: 0.96rem;
-  line-height: 1.55;
-  max-width: 25rem;
-}
-
-.project-page__cover {
-  align-items: center;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  margin-top: 2.25rem;
-  max-height: 27rem;
-  overflow: hidden;
-  padding: 1rem;
-}
-
-.project-page__cover img {
-  display: block;
   height: auto;
-  max-height: 25rem;
-  max-width: 100%;
   object-fit: contain;
-  width: auto;
-}
-
-.project-page__summary {
-  padding: 3.5rem var(--page-padding);
-}
-
-.project-page__summary-heading h2 {
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  margin-top: 0.75rem;
-}
-
-.project-page__summary-grid {
-  margin-top: 2.25rem;
-}
-
-.project-page__summary-grid article {
-  min-height: 8.5rem;
-  padding: 1.15rem;
-}
-
-.project-page__summary-grid p {
-  font-size: 0.9rem;
-  line-height: 1.55;
-}
-
-.project-page__gallery {
-  padding: 3.5rem var(--page-padding) 4rem;
-}
-
-.project-page__gallery-top {
-  border-bottom: 1px solid rgba(23, 26, 34, 0.22);
-  display: flex;
-  font-size: 0.58rem;
-  justify-content: space-between;
-  letter-spacing: 0.11em;
-  padding-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-.project-page__gallery-grid {
-  display: grid;
-  gap: 0.85rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 1.75rem;
-}
-
-.project-page__gallery-item {
-  align-items: center;
-  aspect-ratio: 4 / 3;
-  background: rgba(23, 26, 34, 0.04);
-  cursor: zoom-in;
-  display: flex;
-  justify-content: center;
-  max-height: 18rem;
-  overflow: hidden;
-  padding: 0.35rem;
-  position: relative;
+  object-position: center;
+  transform: scale(1);
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
   width: 100%;
 }
 
-.project-page__gallery-item--wide {
-  aspect-ratio: 16 / 7;
-  grid-column: 1 / -1;
+.project-page__gallery-item:nth-child(1) img {
+  max-height: 31rem;
+  width: 100%;
+}
+
+.project-page__gallery-item:nth-child(n + 2) img {
   max-height: 20rem;
 }
 
-.project-page__gallery-item img {
-  display: block;
-  height: 100%;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-  width: 100%;
-}
-
 .project-page__gallery-item:hover img {
-  transform: scale(1.025);
+  opacity: 0.94;
+  transform: scale(1.012);
 }
 
-.project-page__gallery-open {
-  display: none !important;
-}
-
-.project-page__closing {
-  padding: 3.75rem var(--page-padding) 4rem;
-}
-
-.project-page__closing h2 {
-  font-size: clamp(3rem, 5vw, 5rem);
-  margin-top: 1.75rem;
-}
-
-.project-page__closing a {
-  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
-  margin-top: 2.5rem;
-  width: min(100%, 27rem);
-}
+/* =========================================================
+   LIGHTBOX
+========================================================= */
 
 .project-lightbox {
   align-items: center;
   display: flex;
   inset: 0;
   justify-content: center;
-  padding: 3.75rem 5rem 2rem;
+  padding: 4.5rem 5rem 2rem;
   position: fixed;
-  z-index: 2000;
+  z-index: 3000;
 }
 
 .project-lightbox__backdrop {
-  background: rgba(8, 10, 15, 0.94);
+  background: rgba(10, 12, 18, 0.96);
   cursor: zoom-out;
   inset: 0;
   position: absolute;
-  width: 100%;
 }
 
 .project-lightbox__figure {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: min(82svh, 48rem);
+  height: calc(100svh - 7rem);
   justify-content: center;
-  max-width: min(82vw, 72rem);
+  margin: 0;
+  max-width: 82rem;
   position: relative;
   width: 100%;
   z-index: 2;
@@ -2756,36 +2606,34 @@ body:has(.project-page) .navbar__cta {
 
 .project-lightbox__figure img {
   display: block;
-  height: calc(100% - 2.75rem);
-  max-height: calc(100svh - 8rem);
+  height: auto;
+  max-height: calc(100svh - 10rem);
   max-width: 100%;
   object-fit: contain;
   width: auto;
 }
 
 .project-lightbox__figure figcaption {
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
+  color: rgba(255, 255, 255, 0.68);
   display: flex;
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   justify-content: space-between;
   letter-spacing: 0.1em;
-  margin-top: 0.85rem;
-  padding-top: 0.7rem;
+  margin-top: 1rem;
   text-transform: uppercase;
-  width: 100%;
+  width: min(100%, 72rem);
 }
 
 .project-lightbox__close {
   align-items: center;
   background: transparent;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   display: flex;
-  gap: 0.75rem;
+  gap: 0.8rem;
   position: absolute;
   right: 1.5rem;
-  top: 1.25rem;
+  top: 1.4rem;
   z-index: 4;
 }
 
@@ -2796,496 +2644,98 @@ body:has(.project-page) .navbar__cta {
 }
 
 .project-lightbox__close span:last-child {
-  font-size: 1.9rem;
-  line-height: 0.8;
+  font-size: 1.7rem;
+  line-height: 1;
 }
 
 .project-lightbox__arrow {
   align-items: center;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   display: flex;
   font-size: 1rem;
-  height: 2.75rem;
+  height: 2.8rem;
   justify-content: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 2.75rem;
+  width: 2.8rem;
   z-index: 4;
 }
 
 .project-lightbox__arrow--previous { left: 1.25rem; }
 .project-lightbox__arrow--next { right: 1.25rem; }
 
-@media (max-width: 900px) {
-  .project-page__shell { max-width: 46rem; }
-  .project-page__heading { grid-template-columns: 1fr; gap: 1.5rem; }
-  .project-page__description { max-width: 36rem; }
-  .project-page__summary-grid { grid-template-columns: 1fr; }
-  .project-page__summary-grid article {
-    border-bottom: 1px solid rgba(255,255,255,.22);
-    border-right: 0;
-    min-height: auto;
-    padding: 1.35rem 0;
-  }
-}
-
-@media (max-width: 650px) {
-  .project-page__hero {
-    padding: 5.1rem var(--page-padding) 2.5rem;
-  }
-
-  .project-page__title h1 {
-    font-size: clamp(2.6rem, 12vw, 3.7rem);
-    max-width: 100%;
-  }
-
-  .project-page__cover {
-    background: transparent;
-    max-height: none;
-    padding: 0;
-  }
-
-  .project-page__cover img {
-    height: auto;
-    max-height: none;
-    width: 100%;
-  }
-
-  .project-page__summary,
-  .project-page__gallery {
-    padding: 2.75rem var(--page-padding);
-  }
-
-  .project-page__gallery-top {
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .project-page__gallery-grid {
-    display: grid;
-    gap: 0.55rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 1.5rem;
-  }
-
-  .project-page__gallery-item,
-  .project-page__gallery-item--wide {
-    background: transparent;
-    grid-column: auto;
-    max-height: none;
-    min-height: 0;
-    padding: 0;
-  }
-
-  .project-page__gallery-item:nth-child(1) {
-    aspect-ratio: 16 / 10;
-    grid-column: 1 / -1;
-  }
-
-  .project-page__gallery-item:nth-child(2),
-  .project-page__gallery-item:nth-child(3) {
-    aspect-ratio: 4 / 5;
-  }
-
-  .project-page__gallery-item:nth-child(4) {
-    aspect-ratio: 16 / 11;
-    grid-column: 1 / -1;
-  }
-
-  .project-page__gallery-item:nth-child(5),
-  .project-page__gallery-item:nth-child(6) {
-    aspect-ratio: 1 / 1;
-  }
-
-  .project-page__gallery-item:nth-child(7),
-  .project-page__gallery-item:nth-child(10),
-  .project-page__gallery-item:nth-child(13) {
-    aspect-ratio: 16 / 10;
-    grid-column: 1 / -1;
-  }
-
-  .project-page__gallery-item img {
-    height: 100%;
-    max-height: none;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  .project-page__closing {
-    padding: 3.5rem var(--page-padding);
-  }
-
-  .project-page__closing h2 {
-    font-size: clamp(2.9rem, 13vw, 4.4rem);
-  }
-
-  .project-lightbox {
-    padding: 4.25rem 0.75rem 1rem;
-  }
-
-  .project-lightbox__figure {
-    height: calc(100svh - 6rem);
-    max-width: 100%;
-  }
-
-  .project-lightbox__figure img {
-    height: auto;
-    max-height: calc(100svh - 10rem);
-    object-fit: contain;
-    width: 100%;
-  }
-
-  .project-lightbox__arrow {
-    bottom: 1rem;
-    top: auto;
-    transform: none;
-  }
-}
-
 /* =========================================================
-   HOME — RESPONSIVE CONSOLIDADO
+   CIERRE DE PROYECTO
 ========================================================= */
 
-@media (max-width: 1000px) {
-  .content-section__layout,
-  .trusted__heading {
-    grid-template-columns: 1fr;
-  }
-
-  .content-section__layout {
-    margin-top: 3rem;
-  }
-
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .service-card {
-    border-bottom: 1px solid rgba(23, 26, 34, 0.25);
-    min-height: 26rem;
-  }
-
-  .service-card:nth-child(2) {
-    border-right: 0;
-  }
-
-  .contact-section--form {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .contact-section__heading h2 {
-    margin-top: 2rem;
-    max-width: 9ch;
-  }
-
-  .trusted__heading p {
-    max-width: 32rem;
-  }
+.project-page__closing {
+  background: var(--orange);
+  color: var(--white);
+  padding: 3.75rem var(--page-padding) 4rem;
 }
 
-@media (max-width: 650px) {
-  .content-section {
-    padding:
-      2.75rem
-      var(--page-padding)
-      2.75rem;
-  }
-
-  .content-section__layout {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    margin-top: 2.5rem;
-  }
-
-  .content-section__layout h2 {
-    font-size: clamp(2.7rem, 11vw, 3.8rem);
-    max-width: 100%;
-  }
-
-  .content-section__word {
-    font-size: clamp(6rem, 26vw, 9rem);
-  }
-
-  .services-section {
-    padding:
-      2.25rem
-      var(--page-padding)
-      2.25rem;
-  }
-
-  .services-section__heading {
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .services-section__heading h2 {
-    font-size: clamp(3rem, 13vw, 4.2rem);
-    text-align: left;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    margin-top: 1.75rem;
-  }
-
-  .service-card {
-    border-right: 0;
-    min-height: auto;
-    padding: 1rem 0.25rem;
-  }
-
-  .service-card__heading {
-    margin-top: 2.25rem;
-  }
-
-  .service-card__heading h3 {
-    font-size: clamp(2.3rem, 10vw, 3rem);
-  }
-
-  .service-card__description {
-    min-height: 0;
-  }
-
-  .service-card__action {
-    margin-top: 1rem;
-  }
-
-  .trusted {
-    padding: 2.5rem 0 2rem;
-  }
-
-  .trusted__heading {
-    gap: 1.25rem;
-    grid-template-columns: 1fr;
-    margin-bottom: 1rem;
-  }
-
-  .trusted__heading h2 {
-    font-size: clamp(2.8rem, 11vw, 3.8rem);
-  }
-
-  .trusted__item {
-    width: 210px;
-  }
-
-  .trusted__item img {
-    max-height: 72px;
-    width: 155px;
-  }
-
-  .contact-section {
-    padding:
-      2.6rem
-      var(--page-padding)
-      2.8rem;
-  }
-
-  .contact-section--form {
-    display: block;
-  }
-
-  .contact-section__heading h2 {
-    font-size: clamp(2.9rem, 11.5vw, 3.9rem);
-    margin-top: 1.75rem;
-    max-width: 100%;
-  }
-
-  .contact-section__form-area {
-    margin-top: 2.5rem;
-  }
-
-  .contact-form__grid {
-    grid-template-columns: 1fr;
-    row-gap: 0.8rem;
-  }
-
-  .contact-form__field--full {
-    grid-column: auto;
-  }
-
-  .contact-form__actions {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================================================
-   FIX FINAL — QUIÉNES SOMOS
-========================================================= */
-
-.content-section--about {
-  padding-bottom: clamp(4.5rem, 6vw, 6rem);
-}
-
-.content-section--about .content-section__word {
-  bottom: 1.1rem;
-  font-size: clamp(6.5rem, 13vw, 12rem);
-  line-height: 0.72;
-  opacity: 0.045;
-}
-
-@media (max-width: 1000px) {
-  .content-section--about {
-    padding-bottom: 4.25rem;
-  }
-
-  .content-section--about .content-section__word {
-    bottom: 0.9rem;
-    font-size: clamp(6rem, 17vw, 10rem);
-  }
-}
-
-@media (max-width: 650px) {
-  .content-section--about {
-    padding:
-      2.75rem
-      var(--page-padding)
-      3.15rem;
-  }
-
-  .content-section--about .content-section__layout {
-    gap: 1.5rem;
-    margin-top: 2.25rem;
-  }
-
-  .content-section--about .content-section__word {
-    bottom: auto;
-    font-size: clamp(5.5rem, 28vw, 8rem);
-    left: auto;
-    line-height: 0.75;
-    margin-top: 1.6rem;
-    opacity: 0.045;
-    position: relative;
-    right: auto;
-  }
-}
-
-/* =========================================================
-   ANCLAS DE NAVEGACIÓN
-========================================================= */
-
-#inicio,
-#proyectos,
-#capacidades,
-#metodo,
-#contacto {
-  scroll-margin-top: 4.5rem;
-}
-
-
-/* =========================================================
-   FOOTER — REDES SOCIALES
-========================================================= */
-
-.site-footer__social-disabled {
-  line-height: 1.4;
-  opacity: 0.45;
-  width: fit-content;
-}
-
-
-/* =========================================================
-   MICRODATOS DE PROYECTO
-========================================================= */
-
-.project-page__meta {
-  border-bottom: 1px solid rgba(23, 26, 34, 0.18);
-  border-top: 1px solid rgba(23, 26, 34, 0.18);
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 1.75rem auto 0;
-  max-width: 64rem;
-  width: 100%;
-}
-
-.project-page__meta > div {
-  border-right: 1px solid rgba(23, 26, 34, 0.18);
-  min-width: 0;
-  padding: 0.8rem 0.9rem;
-}
-
-.project-page__meta > div:first-child {
-  padding-left: 0;
-}
-
-.project-page__meta > div:last-child {
-  border-right: 0;
-  padding-right: 0;
-}
-
-.project-page__meta span {
-  display: block;
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
-  opacity: 0.52;
+.project-page__closing > p {
+  font-size: 0.62rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
-.project-page__meta p {
-  font-size: 0.72rem;
-  line-height: 1.4;
-  margin-top: 0.35rem;
+.project-page__closing h2 {
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 450;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  margin-top: 1.75rem;
 }
 
+.project-page__closing a {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.82);
+  display: flex;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  justify-content: space-between;
+  margin-left: auto;
+  margin-top: 2.5rem;
+  padding-bottom: 0.8rem;
+  transition: opacity 220ms ease, transform 220ms ease;
+  width: min(100%, 27rem);
+}
+
+.project-page__closing a:hover {
+  opacity: 0.78;
+  transform: translateY(-2px);
+}
 
 /* =========================================================
-   PROYECTOS — MENOS AIRE + GALERÍA MÓVIL EDITORIAL
-========================================================= */
-
-.project-page__hero {
-  padding-bottom: 2rem;
-}
-
-.project-page__heading {
-  margin-top: 1.9rem;
-}
-
-.project-page__cover {
-  background: transparent;
-  margin-top: 1.5rem;
-  padding: 0;
-}
-
-.project-page__cover img {
-  object-fit: contain;
-}
-
-.project-page__gallery {
-  padding-bottom: 2.8rem;
-  padding-top: 2.35rem;
-}
-
-.project-page__gallery-grid {
-  gap: 0.55rem;
-  margin-top: 1.25rem;
-}
-
-.project-page__gallery-item,
-.project-page__gallery-item--wide {
-  background: transparent;
-  padding: 0;
-}
-
-
-/* =========================================================
-   RESPONSIVE FINAL
+   RESPONSIVE CONSOLIDADO FINAL
 ========================================================= */
 
 @media (max-width: 1000px) {
-  .site-footer__main {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+  .content-section--about .content-section__word {
+    bottom: 0.5rem;
+    font-size: clamp(6rem, 16vw, 9rem);
+  }
+
+  .services-section__cross {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page__heading {
+    gap: 1.6rem;
+    grid-template-columns: 1fr;
+  }
+
+  .project-page__description {
+    max-width: 40rem;
   }
 
   .project-page__meta {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .project-page__meta > div:nth-child(2) {
@@ -3293,292 +2743,162 @@ body:has(.project-page) .navbar__cta {
   }
 
   .project-page__meta > div:nth-child(-n + 2) {
-    border-bottom:
-      1px solid rgba(23, 26, 34, 0.18);
+    border-bottom: 1px solid rgba(23, 26, 34, 0.18);
+  }
+
+  .project-page__summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page__summary-grid article {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    border-right: 0;
+    min-height: auto;
+    padding: 1.35rem 0;
+  }
+
+  .project-page__summary-grid article:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .trusted__heading h2 {
+    white-space: normal;
+  }
+
+  .trusted__heading h2 br {
+    display: none;
   }
 }
 
 @media (max-width: 650px) {
+  .content-section--about {
+    padding-bottom: 2.6rem;
+  }
+
+  .content-section--about .content-section__layout {
+    gap: 1.5rem;
+    margin-top: 2.35rem;
+  }
+
+  .content-section--about .content-section__word {
+    bottom: auto;
+    font-size: clamp(4.6rem, 20vw, 6.4rem);
+    left: auto;
+    line-height: 0.72;
+    margin-top: 1.75rem;
+    opacity: 0.035;
+    position: relative;
+    right: auto;
+  }
+
+  .services-section__cross {
+    gap: 1.3rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .services-section__cross h3 {
+    font-size: 1.7rem;
+  }
+
   .project-page__hero {
-    padding:
-      4.75rem
-      var(--page-padding)
-      1.85rem;
+    padding: 5rem var(--page-padding) 2.25rem;
   }
 
   .project-page__heading {
-    gap: 0.9rem;
-    margin-top: 1.45rem;
+    margin-top: 1.6rem;
   }
 
   .project-page__title h1 {
-    font-size:
-      clamp(2.45rem, 10.8vw, 3.4rem);
+    font-size: clamp(2.65rem, 11vw, 3.7rem);
+    max-width: none;
   }
 
   .project-page__description {
-    font-size: 0.83rem;
+    font-size: 0.86rem;
   }
 
   .project-page__meta {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
   }
 
   .project-page__meta > div {
-    padding: 0.68rem 0.45rem;
+    padding: 0.7rem 0.6rem;
   }
 
-  .project-page__meta > div:nth-child(odd) {
-    padding-left: 0;
-  }
-
-  .project-page__meta > div:nth-child(even) {
-    padding-right: 0;
+  .project-page__meta p {
+    font-size: 0.68rem;
   }
 
   .project-page__cover {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .project-page__cover img {
+    max-height: none;
+    width: min(100%, 32rem);
+  }
+
+  .project-page__summary {
+    padding: 3rem var(--page-padding);
   }
 
   .project-page__gallery {
-    padding:
-      2.1rem
-      var(--page-padding)
-      2.6rem;
+    padding: 2.75rem var(--page-padding) 3.5rem;
+  }
+
+  .project-page__gallery-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
   .project-page__gallery-grid {
-    display: grid;
-    gap: 0.45rem;
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-    margin-top: 1.1rem;
-  }
-
-  .project-page__gallery-item,
-  .project-page__gallery-item--wide {
-    grid-column: auto;
-    max-height: none;
-    min-height: 0;
+    gap: 0.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1.4rem;
   }
 
   .project-page__gallery-item:nth-child(1) {
-    aspect-ratio: auto;
     grid-column: 1 / -1;
   }
 
-  .project-page__gallery-item:nth-child(1) img {
-    height: auto;
-    object-fit: contain;
+  .project-page__gallery-item:nth-child(n + 2) {
+    grid-column: span 1;
   }
 
-  .project-page__gallery-item:nth-child(2),
-  .project-page__gallery-item:nth-child(3) {
-    aspect-ratio: 4 / 5;
+  .project-page__gallery-item img,
+  .project-page__gallery-item:nth-child(1) img,
+  .project-page__gallery-item:nth-child(n + 2) img {
+    max-height: none;
+    width: 100%;
   }
 
-  .project-page__gallery-item:nth-child(2) img,
-  .project-page__gallery-item:nth-child(3) img {
-    height: 100%;
-    object-fit: contain;
+  .project-lightbox {
+    padding: 4rem 0.8rem 1rem;
   }
 
-  .project-page__gallery-item:nth-child(4) {
-    aspect-ratio: auto;
-    grid-column: 1 / -1;
+  .project-lightbox__figure {
+    height: calc(100svh - 6rem);
   }
 
-  .project-page__gallery-item:nth-child(4) img {
-    height: auto;
-    object-fit: contain;
+  .project-lightbox__figure img {
+    max-height: calc(100svh - 9rem);
   }
 
-  .site-footer {
-    height: auto;
-    min-height: 34rem;
-    padding-bottom: 4rem;
+  .project-lightbox__arrow {
+    bottom: 1rem;
+    top: auto;
+    transform: none;
   }
 
-  .site-footer__main {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+  .project-lightbox__arrow--previous { left: 1rem; }
+  .project-lightbox__arrow--next { right: 1rem; }
+
+  .project-lightbox__close {
+    right: 1rem;
+    top: 1rem;
   }
-}
-
-@media (max-width: 420px) {
-  .site-footer__main {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================================================
-   BRHN — FIX DEFINITIVO NAV + FOOTER
-   DEJAR ESTE BLOQUE AL FINAL
-========================================================= */
-
-html {
-  scroll-behavior: smooth;
-}
-
-#inicio,
-#proyectos,
-#capacidades,
-#metodo,
-#contacto {
-  scroll-margin-top: 5rem;
-}
-
-/* FOOTER: todo vuelve a flujo normal */
-body .site-footer {
-  background: #11151f;
-  color: var(--white);
-  height: auto !important;
-  min-height: 0 !important;
-  overflow: hidden;
-  padding:
-    2.75rem
-    var(--page-padding)
-    1rem;
-  position: relative;
-}
-
-body .site-footer::before {
-  background: rgba(255, 255, 255, 0.14);
-  content: "";
-  height: 1px;
-  left: var(--page-padding);
-  position: absolute;
-  right: var(--page-padding);
-  top: 1.25rem;
-}
-
-body .site-footer__main {
-  display: grid;
-  gap: clamp(1.5rem, 3vw, 3.25rem);
-  grid-template-columns:
-    minmax(12rem, 1.25fr)
-    minmax(8rem, 0.8fr)
-    minmax(11rem, 1fr)
-    minmax(7rem, 0.7fr)
-    minmax(8rem, 0.7fr);
-  left: auto !important;
-  position: relative !important;
-  right: auto !important;
-  top: auto !important;
-  z-index: 3;
-}
-
-body .site-footer__identity,
-body .site-footer__column {
-  min-width: 0;
-}
-
-body .site-footer__column a,
-body .site-footer__column p,
-body .site-footer__social-disabled {
-  font-size: 0.68rem;
-  line-height: 1.5;
-}
-
-body .site-footer__social-disabled {
-  opacity: 0.42;
-}
-
-body .site-footer__word {
-  bottom: auto !important;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  height: clamp(7rem, 11vw, 10rem);
-  left: auto !important;
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  pointer-events: none;
-  position: relative !important;
-  right: auto !important;
-  top: auto !important;
-  z-index: 1;
-}
-
-body .site-footer__word span {
-  align-self: end;
-  color: rgba(255, 255, 255, 0.065);
-  font-size: clamp(7rem, 12vw, 12rem);
-  line-height: 0.72;
-  text-align: center;
-}
-
-body .site-footer__bottom {
-  align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.13);
-  bottom: auto !important;
-  display: flex;
-  justify-content: space-between;
-  left: auto !important;
-  min-height: 2.6rem;
-  position: relative !important;
-  right: auto !important;
-  z-index: 4;
-}
-
-@media (max-width: 1000px) {
-  body .site-footer__main {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-    row-gap: 2rem;
-  }
-
-  body .site-footer__word {
-    height: 7rem;
-  }
-}
-
-@media (max-width: 650px) {
-  body .site-footer {
-    padding:
-      2.5rem
-      var(--page-padding)
-      1rem;
-  }
-
-  body .site-footer__main {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-    gap: 1.75rem 1.25rem;
-  }
-
-  body .site-footer__word {
-    height: 5.5rem;
-    margin-top: 2rem;
-  }
-
-  body .site-footer__word span {
-    font-size: 22vw;
-  }
-
-  body .site-footer__bottom {
-    font-size: 0.57rem;
-  }
-}
-
-@media (max-width: 420px) {
-  body .site-footer__main {
-    grid-template-columns: 1fr;
-  }
-
-  body .site-footer__word {
-    height: 4.5rem;
-  }
-
-  body .site-footer__bottom {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.3rem;
-    justify-content: center;
-    padding: 0.65rem 0;
-  }
-}
-
-/* MICRODATOS — valores visibles */
-.project-page__meta p {
-  color: var(--ink);
-  opacity: 1;
 }
