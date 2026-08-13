@@ -49,19 +49,10 @@ export default async function ProjectPage({
             <span>Proyecto / BRHN</span>
           </div>
 
-          <div className="project-page__heading">
-            <div className="project-page__title">
-              <p>{project.category}</p>
+          {/* =================================================
+              METADATOS
+          ================================================= */}
 
-              <h1>{project.title}</h1>
-            </div>
-
-            <p className="project-page__description">
-              {project.description}
-            </p>
-          </div>
-
-          {/* METADATOS — SE QUEDAN ARRIBA */}
           <div
             aria-label="Información del proyecto"
             className="project-page__meta"
@@ -88,7 +79,7 @@ export default async function ProjectPage({
           </div>
 
           {/* =================================================
-              COVER + STORY
+              COVER + INFORMACIÓN DEL PROYECTO
           ================================================= */}
 
           <div className="project-page__feature">
@@ -100,16 +91,27 @@ export default async function ProjectPage({
             </figure>
 
             <aside className="project-page__story">
-              <span>Sobre el proyecto</span>
+              <span className="project-page__story-label">
+                Sobre el proyecto
+              </span>
 
-              <h2>{project.storyTitle}</h2>
+              <h1>{project.title}</h1>
 
-              <p>{project.story}</p>
+              <div className="project-page__story-content">
+                <div>
+                  <span>El reto</span>
+                  <p>{project.challenge}</p>
+                </div>
 
-              <div className="project-page__story-tags">
-                {project.tags.slice(0, 4).map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
+                <div>
+                  <span>Lo que hicimos</span>
+                  <p>{project.solution}</p>
+                </div>
+
+                <div>
+                  <span>Herramientas y disciplinas</span>
+                  <p>{project.tags.join(" · ")}</p>
+                </div>
               </div>
             </aside>
           </div>
@@ -151,7 +153,6 @@ export default async function ProjectPage({
                   key={`${stat.value}-${stat.label}`}
                 >
                   <strong>{stat.value}</strong>
-
                   <span>{stat.label}</span>
                 </div>
               ))}

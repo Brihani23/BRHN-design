@@ -1,10 +1,22 @@
 import Link from "next/link";
 
 const navItems = [
-  { label: "Proyectos", href: "/#proyectos" },
-  { label: "Capacidades", href: "/#capacidades" },
-  { label: "Método", href: "/#metodo" },
-  { label: "Contacto", href: "/#contacto" },
+  {
+    label: "Proyectos",
+    href: "/#proyectos",
+  },
+  {
+    label: "Capacidades",
+    href: "/#capacidades",
+  },
+  {
+    label: "Método",
+    href: "/#metodo",
+  },
+  {
+    label: "Contacto",
+    href: "/#contacto",
+  },
 ];
 
 export default function Navbar() {

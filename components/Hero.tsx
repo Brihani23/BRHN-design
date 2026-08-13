@@ -11,8 +11,13 @@ export default function Hero() {
 
       <div className="hero__content">
         <div className="hero__eyebrow">
-          <span>Casa de diseño integral</span>
-          <span>Guadalajara · México</span>
+          <span>
+            Casa de diseño integral
+          </span>
+
+          <span>
+            Guadalajara · México
+          </span>
         </div>
 
         <h1>
@@ -28,16 +33,23 @@ export default function Hero() {
 
         <div className="hero__bottom">
           <p>
-            Producto, identidad, estrategia y tecnología
-            conectadas en un solo sistema.
+            Producto, identidad,
+            estrategia y tecnología
+            conectadas en un solo
+            sistema.
           </p>
 
           <a
             className="hero__button"
-            href="/#proyectos"
+            href="#proyectos"
           >
-            <span>Explorar BRHN</span>
-            <span aria-hidden="true">↘</span>
+            <span>
+              Explorar BRHN
+            </span>
+
+            <span aria-hidden="true">
+              ↘
+            </span>
           </a>
         </div>
       </div>
