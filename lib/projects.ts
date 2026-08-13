@@ -4,6 +4,11 @@ export type ProjectService =
   | "marcas"
   | "espacios";
 
+export type ProjectStat = {
+  value: string;
+  label: string;
+};
+
 export type Project = {
   id: string;
   number: string;
@@ -16,6 +21,12 @@ export type Project = {
   scope: string;
 
   description: string;
+
+  storyTitle: string;
+  story: string;
+
+  stats?: ProjectStat[];
+
   cover: string;
   images: string[];
   tags: string[];
@@ -42,6 +53,31 @@ export const projects: Project[] = [
 
     description:
       "Plataforma que conecta clientes, técnicos y administración en un solo flujo para gestionar reportes, cotizaciones, rutas, servicios y pagos.",
+
+    storyTitle:
+      "De reportar una falla a controlar toda la operación.",
+
+    story:
+      "ROGER nació para transformar un servicio técnico tradicional en una experiencia conectada. Diseñamos un ecosistema donde clientes, técnicos y administración comparten un mismo flujo: reportar, diagnosticar, cotizar, programar, ejecutar y cobrar. El resultado no es solamente una aplicación; es una nueva manera de operar el negocio.",
+
+    stats: [
+      {
+        value: "03",
+        label: "Perfiles conectados",
+      },
+      {
+        value: "01",
+        label: "Sistema central",
+      },
+      {
+        value: "360°",
+        label: "Flujo operativo",
+      },
+      {
+        value: "End-to-end",
+        label: "Experiencia",
+      },
+    ],
 
     cover: "/projects/roger/cover.png",
 
@@ -88,6 +124,31 @@ export const projects: Project[] = [
     description:
       "Evolución de la experiencia digital de un depósito dental mediante arquitectura de información, búsqueda, contenido técnico y herramientas de conversión.",
 
+    storyTitle:
+      "Convertir un catálogo complejo en una experiencia que ayuda a comprar.",
+
+    story:
+      "BIGTREE necesitaba algo más que una tienda en línea. El reto fue transformar un catálogo dental amplio y técnico en una plataforma capaz de orientar, informar y convertir. Arquitectura, búsqueda, contenido, automatización y experiencia de usuario trabajan ahora como un mismo sistema digital.",
+
+    stats: [
+      {
+        value: "360°",
+        label: "Ecommerce",
+      },
+      {
+        value: "UX/UI",
+        label: "Experiencia",
+      },
+      {
+        value: "SEO",
+        label: "Descubrimiento",
+      },
+      {
+        value: "IA",
+        label: "Asistencia",
+      },
+    ],
+
     cover: "/projects/bigtree/cover.png",
 
     images: [
@@ -132,6 +193,31 @@ export const projects: Project[] = [
 
     description:
       "Diseño y desarrollo de una chamarra rompevientos desde su concepto funcional hasta la selección de materiales, construcción y preparación para producción.",
+
+    storyTitle:
+      "Diseñar protección sin sacrificar movimiento.",
+
+    story:
+      "El Rompevientos BRHN explora cómo función, material y forma pueden convertirse en una sola experiencia. Desde la ventilación y la construcción textil hasta el empaque, cada decisión responde al movimiento, al aire y a la relación entre el usuario y su entorno.",
+
+    stats: [
+      {
+        value: "01",
+        label: "Producto integral",
+      },
+      {
+        value: "Textil",
+        label: "Desarrollo",
+      },
+      {
+        value: "Proto",
+        label: "Validación",
+      },
+      {
+        value: "Packaging",
+        label: "Experiencia",
+      },
+    ],
 
     cover: "/projects/rompevientos/cover.png",
 
@@ -178,6 +264,31 @@ export const projects: Project[] = [
 
     description:
       "Desarrollo de una identidad visual flexible y coherente, construida para crecer junto con la marca y funcionar en medios físicos y digitales.",
+
+    storyTitle:
+      "Una identidad construida alrededor del movimiento.",
+
+    story:
+      "HUGE STEPS necesitaba traducir rehabilitación, confianza y movimiento en una identidad reconocible. Construimos un sistema visual capaz de vivir en múltiples puntos de contacto sin perder consistencia, manteniendo una personalidad cercana, dinámica y profesional.",
+
+    stats: [
+      {
+        value: "01",
+        label: "Sistema de marca",
+      },
+      {
+        value: "360°",
+        label: "Identidad",
+      },
+      {
+        value: "Físico",
+        label: "Aplicaciones",
+      },
+      {
+        value: "Digital",
+        label: "Aplicaciones",
+      },
+    ],
 
     cover: "/projects/huge-steps/cover.png",
 

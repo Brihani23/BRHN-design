@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
 type ProjectGalleryProps = {
   images: string[];
@@ -11,21 +14,40 @@ export default function ProjectGallery({
   images,
   title,
 }: ProjectGalleryProps) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] =
+    useState<number | null>(null);
 
-  const closeLightbox = () => setActiveIndex(null);
+  const closeLightbox = () => {
+    setActiveIndex(null);
+  };
 
   const showPrevious = () => {
     setActiveIndex((current) => {
-      if (current === null || images.length === 0) return null;
-      return current === 0 ? images.length - 1 : current - 1;
+      if (
+        current === null ||
+        images.length === 0
+      ) {
+        return null;
+      }
+
+      return current === 0
+        ? images.length - 1
+        : current - 1;
     });
   };
 
   const showNext = () => {
     setActiveIndex((current) => {
-      if (current === null || images.length === 0) return null;
-      return current === images.length - 1 ? 0 : current + 1;
+      if (
+        current === null ||
+        images.length === 0
+      ) {
+        return null;
+      }
+
+      return current === images.length - 1
+        ? 0
+        : current + 1;
     });
   };
 
@@ -37,36 +59,70 @@ export default function ProjectGallery({
 
     document.body.style.overflow = "hidden";
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") showPrevious();
-      if (event.key === "ArrowRight") showNext();
+    const handleKeyDown = (
+      event: KeyboardEvent,
+    ) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPrevious();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNext();
+      }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleKeyDown,
+    );
 
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
+
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
     };
   }, [activeIndex, images.length]);
 
-  if (images.length === 0) return null;
+  if (images.length === 0) {
+    return null;
+  }
 
   return (
     <>
-      <div className="project-page__gallery-grid">
+      <div
+        className="project-page__gallery-grid"
+        data-count={images.length}
+      >
         {images.map((image, index) => (
           <button
-            aria-label={`Abrir imagen ${index + 1} de ${title}`}
-            className="project-page__gallery-item"
+            aria-label={`Abrir imagen ${
+              index + 1
+            } de ${title}`}
+            className={`project-page__gallery-item project-page__gallery-item--${
+              (index % 6) + 1
+            }`}
             key={`${image}-${index}`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() =>
+              setActiveIndex(index)
+            }
             type="button"
           >
             <img
-              alt={`${title} — imagen ${index + 1}`}
-              loading={index > 1 ? "lazy" : "eager"}
+              alt={`${title} — imagen ${
+                index + 1
+              }`}
+              loading={
+                index > 1
+                  ? "lazy"
+                  : "eager"
+              }
               src={image}
             />
           </button>
@@ -93,7 +149,9 @@ export default function ProjectGallery({
             type="button"
           >
             <span>Cerrar</span>
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">
+              ×
+            </span>
           </button>
 
           {images.length > 1 && (
@@ -109,15 +167,23 @@ export default function ProjectGallery({
 
           <figure className="project-lightbox__figure">
             <img
-              alt={`${title} — imagen ampliada ${activeIndex + 1}`}
+              alt={`${title} — imagen ampliada ${
+                activeIndex + 1
+              }`}
               src={images[activeIndex]}
             />
 
             <figcaption>
               <span>{title}</span>
+
               <span>
-                {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                {String(images.length).padStart(2, "0")}
+                {String(
+                  activeIndex + 1,
+                ).padStart(2, "0")}{" "}
+                /{" "}
+                {String(
+                  images.length,
+                ).padStart(2, "0")}
               </span>
             </figcaption>
           </figure>

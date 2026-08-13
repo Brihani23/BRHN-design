@@ -5,7 +5,10 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProjectGallery from "@/components/ProjectGallery";
 
-import { getProjectById, projects } from "../../../lib/projects";
+import {
+  getProjectById,
+  projects,
+} from "../../../lib/projects";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -36,6 +39,10 @@ export default async function ProjectPage({
       <Navbar />
 
       <main className="project-page">
+        {/* =====================================================
+            HERO
+        ===================================================== */}
+
         <section className="project-page__hero">
           <div className="project-page__top">
             <span>{project.number}</span>
@@ -45,6 +52,7 @@ export default async function ProjectPage({
           <div className="project-page__heading">
             <div className="project-page__title">
               <p>{project.category}</p>
+
               <h1>{project.title}</h1>
             </div>
 
@@ -53,6 +61,7 @@ export default async function ProjectPage({
             </p>
           </div>
 
+          {/* METADATOS — SE QUEDAN ARRIBA */}
           <div
             aria-label="Información del proyecto"
             className="project-page__meta"
@@ -78,17 +87,42 @@ export default async function ProjectPage({
             </div>
           </div>
 
-          <figure className="project-page__cover">
-            <img
-              alt={`Portada del proyecto ${project.title}`}
-              src={project.cover}
-            />
-          </figure>
+          {/* =================================================
+              COVER + STORY
+          ================================================= */}
+
+          <div className="project-page__feature">
+            <figure className="project-page__cover">
+              <img
+                alt={`Portada del proyecto ${project.title}`}
+                src={project.cover}
+              />
+            </figure>
+
+            <aside className="project-page__story">
+              <span>Sobre el proyecto</span>
+
+              <h2>{project.storyTitle}</h2>
+
+              <p>{project.story}</p>
+
+              <div className="project-page__story-tags">
+                {project.tags.slice(0, 4).map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </aside>
+          </div>
         </section>
+
+        {/* =====================================================
+            CONTEXTO
+        ===================================================== */}
 
         <section className="project-page__summary">
           <div className="project-page__summary-heading">
             <span>01 / Contexto</span>
+
             <h2>El proyecto.</h2>
           </div>
 
@@ -108,12 +142,34 @@ export default async function ProjectPage({
               <p>{project.result}</p>
             </article>
           </div>
+
+          {project.stats && project.stats.length > 0 && (
+            <div className="project-page__stats">
+              {project.stats.map((stat) => (
+                <div
+                  className="project-page__stat"
+                  key={`${stat.value}-${stat.label}`}
+                >
+                  <strong>{stat.value}</strong>
+
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
+
+        {/* =====================================================
+            GALERÍA
+        ===================================================== */}
 
         <section className="project-page__gallery">
           <div className="project-page__gallery-top">
             <span>02 / Desarrollo</span>
-            <span>Galería del proyecto</span>
+
+            <span>
+              {String(galleryImages.length).padStart(2, "0")} imágenes
+            </span>
           </div>
 
           <ProjectGallery
@@ -121,6 +177,10 @@ export default async function ProjectPage({
             title={project.title}
           />
         </section>
+
+        {/* =====================================================
+            CTA
+        ===================================================== */}
 
         <section className="project-page__closing">
           <p>¿Tienes una idea similar?</p>
